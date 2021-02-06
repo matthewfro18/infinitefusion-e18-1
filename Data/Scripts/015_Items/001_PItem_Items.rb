@@ -101,6 +101,10 @@ def pbIsKeyItem?(item)
   return ret && ret==6
 end
 
+def pbIsKeyItemOrHM?(item)
+  return pbIsKeyItem?(item) || pbIsHiddenMachine?(item)
+end
+
 def pbIsEvolutionStone?(item)
   ret = pbGetItemData(item,ITEM_TYPE)
   return ret && ret==7

@@ -1034,6 +1034,42 @@ def pbLedge(_xOffset,_yOffset)
   return false
 end
 
+def Kernel.pbSlideOnWater(event=nil)
+  event=$game_player if !event
+  return if !event
+  return if pbGetTerrainTag(event)!=PBTerrain::WaterCurrent
+  $PokemonGlobal.sliding=true
+  direction=event.direction
+  oldwalkanime=event.walk_anime
+  event.straighten
+  event.pattern=1
+  event.walk_anime=false
+  loop do
+    break if !event.passable?(event.x,event.y,direction)
+    break if pbGetTerrainTag(event)!=PBTerrain::WaterCurrent
+    if $game_map.passable?(event.x,event.y,8)
+      event.move_up
+    elsif $game_map.passable?(event.x,event.y,4)
+      event.move_left
+    elsif $game_map.passable?(event.x,event.y,6)
+      event.move_right
+    elsif $game_map.passable?(event.x,event.y,2)
+      event.move_down
+    end
+    while event.moving?
+      Graphics.update
+      Input.update
+      pbUpdateSceneMap
+    end
+  end
+  event.center(event.x,event.y)
+  event.straighten
+  event.walk_anime=oldwalkanime
+  $PokemonGlobal.sliding=false
+end
+
+
+
 def pbSlideOnIce(event=nil)
   event = $game_player if !event
   return if !event

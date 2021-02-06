@@ -1,0 +1,822 @@
+#########################################
+##	Pokémon Infinite Fusion		#
+#########################################
+#		Changelog		#
+#########################################
+4.8.7
+	Moved Moltres to Mt. Ember
+	Added roaming Latias / Latios (event starts by interacting with the TV in Boon Island's Pokémon Center)
+	Nerfed E4 levels (not including rematch)
+	Updated camper battle sprites to the BW versions
+
+4.8.6 (debug build)
+	Removed the following moves' effects:
+		-Crafty Shield
+		-Fairy Lock
+		-Purify
+	Removed the following abilities' effects:
+		-Gale Wings
+		-Moxie
+		-Innards Out
+		-Magician
+		-Pickpocket
+		-Protean
+		-Disguise
+	Removed early evolutions script
+	Added several previously removed scripts
+	Reverted several code refactors to the 4.6 version
+	Added image showing controls at the start of the game
+	Added an option to fuse Pokémon directly from the PC (WIP)
+	Pokemon storage PC performance improvements
+
+4.8.5
+	Added easy mode 
+		-gen 8 exp gain mechanics
+		-selectable at when starting a new save
+	Removed new safari zone mechanics
+	Bug fixes
+
+4.8.4
+	Added option to randomize gift pokemon
+	Added Fusion Balls
+	Added different sound effect for receiving key items
+	Added music when obtaining a badge
+	Added custom OW and battle sprite for Kurt (thanks Kiwi & Knuckles)
+	Added custom OW and battle sprite for Prof. Elm (thanks Knuckles)
+	Added several missing icons (Thanks Katten & Kiwi)
+	Fixed base sprites using self-fusion sprites for newly added Pokemon
+	Seagallop pass now obtained after beating Silph Co.
+	Train Pass now obtained after Cinnabar Rocket event
+	Ball image on summary screen now uses item sprite
+	Locked day-care behind cut trees
+	Removed early happiness evolutions
+	Made it possible to battle Goldenrod gym trainers after answering the quiz correctly
+	Made it possible to play hard mode and reversed mode in randomizer
+	Added missing sprites
+	Fixed update man wild area randomizer crash
+	Fixed (some of the) random crashes
+4.8.3
+	Fixed pokedex height
+	Fixed daycare eggs hatching too fast
+	Removed double battles (maybe temporary)
+	Changed some trainer battles in celadon sewers
+	Modified some of the Pokeradar locations
+	Fixed Safari Zone glitch
+	Fixed Rock Smash crash
+	Fixed Treasure Beach crash
+4.8
+	Removed happiness evolutions completely
+		-Golbat (lv. 40), Chansey (lv. 42), Buneary (lv. 22)
+		-All level evolutions can happen up to 10 levels early when happiness is maxed
+	Added sub-area in power plant that is accessible early
+	[RECOMPILE ENCOUNTERS] Added new desert area in Safari Zone
+	Added haunted house on Route 15
+	Fixed Mahogany gym trainers sometimes moving into positions that make the puzzle unsolvable
+	Added Pokeradar
+		Obtainable from Oak assistant in Cerulean City
+		Added exclusive pokeradar encounters on most routes
+	Added all pre-evolutions of incomplete lines
+	Added Quests Journal
+		Previously completed quests should be automatically synchronized with the journal
+	Fixed trainer movesets in randomized mode
+	Ability prompt now comes before learning moves while fusing
+	Fixed battle positions for Pokémon 352+
+4.7.1
+	Fixed egg sprites crash
+	Fixed dex converter for triple fusions
+	Fixed sprites not being considered converted after starting a new game
+	Fixed Rock Smash having no encounters in some areas
+	Added version number to error message box
+	Mankey's Claw now affects moves that should never miss
+4.7
+	Remade Groudon's cave on Mt. Ember
+	Added new menu for setting randomizer options
+	Replaced ticking sound when randomizing
+	Changed the game's icon
+	Added in-game volume control options
+	Removed 3d mode option
+	Reduced pokedex lag
+	Modified Viridian City's layout to be closer to the original game
+	Added Kyurem's BW2 fusions signature moves to its fusions with Reshiram/Zekrom
+	No longer possible to breed legendaries by fusing them
+	Slightly altered the Lavender Tower event
+		Master Ball now obtained at Silph Co.
+	New abilities:
+	-Innards Out, Magician, Gale Wings, Disguise, Moxie, Protean, Pickpocket
+	New moves:
+	Purify, Crafty Shield, Fairy Lock
+	Added 30 new Pokémon
+		Roserade, Drifblim, Lopunny, Breloom, Ninjask, Banette, Rotom, Reuniclus, 
+		Whimsicott, Krookodile, Cofagrigus,galvantua, Ferrothorn, Litwick, Lampent, 
+		chandelure, Haxorus, Golurk, Pyukumuku, Klefki, Talonflame, Mimikyu, Volcarona,
+		deino, sweilous, Hydreigon, latios, latias, Deoxys, Jirachi
+	Added starter triple fusions
+
+4.6.2
+	Performance improvements for loading Pokemon information (thanks to Andracass from Pokemon Reborn)
+	New Safari Zone mechanics (thanks to Barafanatic)
+	Added Infinite Super Splicers and Infinite Reversers
+	Made it easier to cross dragon's den after you get the city's badge
+	Fixed incubators having the same effect as Super incubators
+	Navel ticket is now given by Chuck
+	Added maps in Pokémon Centers
+	Moved professor oak's aide talking about hidden abilities to route 3
+	Nerfed Giovanni gym fight
+	Added overworld sprite for Raicune
+
+4.6.1
+	[experimental] Added an option to randomize wild Pokémon by area instead of globally
+		The randomized encounter settings are stored in the Data/encounters_randomized.dat file
+		and can be shared between players.
+	Replaced Fusion Repel by Fusion Incense - has opposite effect
+	Added item for Strength (Route 13)
+	Added item for Waterfall (Route 9)
+	Fusions sprites in front of the logo on title screen
+	Removed Mew easter egg in Vermillion
+
+4.6
+	Added birds at navel rock
+	Version number on title screen is now text instead of an image
+	Moved some houses around in vermillion
+	Added fairy type moves to level up movesets
+	Added daily random static encounter in Mt. Mortar
+	Added static Jynx, Electabuzz and Magmar in Seafoam, Power plant and volcano respectively
+	Added encounters in Burned Tower 
+	Fusing now averages the IVs of both Pokémon
+	Added visual indicator in Azalea Town's gym puzzle
+	Removed the Pinecos on route 29 for Violet City's quest
+	Title screen now uses custom sprites
+	Added Assist pokeballs in Golbat Soar
+	Added a visual indicator for number of jumps left in Golbat Soar
+	Removed Dive spots on Routes 12/13
+	Fixed bug causing rematch levels to reset after rematching a different trainer
+	Small AI improvements (healing items)
+	Fixed map border issues around Cerulean
+	Made it possible to fly to Victory Road
+	Teleporter and Lantern can now be registered from the bag
+	Added Bara's postgame mod
+		-Additional gym battle in Viridian
+		-Bill's BattleTower: new area where you can battle teams based on various members of the discord
+		
+4.5.10
+	
+	Added simple savefile backup system
+	Hard mode: The game doesn't tell you what Pokémon the opponent is about to send
+	Improved town map (script by Marin)
+		-All regions in one map
+		-No flight restrictions between regions
+	HM05 (Waterfall) is now given by Oak after beating the league
+		-The way to New Bark Town is through Tohjo falls
+	Spring boots can now be obtained at Sprout Tower as an alternative to the Golbat minigame
+	Fixed Saffron City team rocket lag
+	Made pickaxe quest easier require only 1 Rare Bone
+	Fixed Hidden ability routes	
+		-Not every pokemon on the route will have their hidden ability	
+		-Unfused "sparkling" pokemon always have their hidden ability
+	Added battle with fossil guy for getting the other generation fossils
+	Added buyable incubators at johto daycare 
+	New field moves: Morning Sun, Moonlight, Rain Dance, Sunny Day, Hail, Sandstorm
+	Rival now keeps his starter for the entire game in randomized mode and in classic mode with non-kanto starters
+	Made Heart Scales from rock smash more common 
+	Lowered level penalty from unfusing with regular DNA Splicers from 25% to 20%
+	Lowered DNA Reverser price to 300
+	Bugfixes
+
+4.5.9
+	NPC trainers now get stronger the more you rebattle them
+	Eggs hatch faster while in the water in the ember spa
+	Increased the experience gain from Exp. All
+	Bug fixes
+	Baby Pokemon evolve by level instead of happiness
+		Munchlax: level 30, Mantyke: level 20, others: level 15	
+4.5.8
+	Route 3 is now accessible before beating Brock
+	Moved Fuschia City rival battle outside of the Pokemon Center
+	Added an NPC explaining hidden ability routes on route 2
+	Discounted fusion items if you save every Silph Co. Worker
+	Added Reversed mode (flips the fusions of every trainers)
+		Can be enabled/disabled via the update man or at the start of a new game
+		(only available if you already have a savefile)
+
+4.5.7
+	Held items are now returned to the bag when wonder trading
+	Added the shiny sparkle to Pokémon caught on hidden ability maps
+	Added a new route between Blackthorn and Mahogany
+	Altered the burned tower
+	Bug fixes
+
+4.5.6
+	Made ruins of alph puzzle a bit more difficult and also optional to get raicune
+		instead it now leads to a room where you can learn hidden power of a specific type
+	Fixed Eusine glitch
+	Morty can now be challenged before getting the spring boots
+	Moved Magnet Stone outside the power plant
+	Pokemon are now sent to the PC when unfusing with a full party
+	Removed Alolan types on self-fusions
+	Added Sevii Islands map / fast travel
+	Added overworld sprite for Genesect encounter
+	Added option for randomized trainers to only use Pokémon that have Custom sprites
+	Added option to skip the intro
+	Added more custom sprites to the base download
+	Added Hard mode
+		(only available if you have beaten the game at least once)
+	Hidden abilities can now be passed on to fusions
+	Pokemon with their hidden abilities will appear in a random map. 
+		Resets every 1500 steps.
+		A NPC on boon island tells you which map
+		
+		
+
+4.5.5
+	Added option to randomize held items
+	Eviolite now also acts as an Everstone
+	Added option for setting icons style
+	Added back support for custom icons
+	Added simple karma system (used for Darkrai and Arceus)
+	Nerfed Brock and Erika slightly
+	Added icons for triple fusions
+	Debug mode now carries over to new games. 
+		(You need to activate it once + save 
+		before starting a new game if you obtained 
+		it in an earlier version)
+4.5.4
+	Old amber quest can now only be done after getting Cut. Adjusted the levels accordingly.
+	Custom sprites now appear in fusion preview screen
+	Party screen icons now use the icons from both fused pokemon
+	Removed rival double battle in Lavender Tower
+	Made the Fuschia city surf race a bit easier
+	Added hard mode new game option (beta feature)
+		Trainers always use the best AI
+		Adds a few levels to everything
+		Gives an healing item to every trainer
+		Only available after beating the game once
+
+4.5.3
+	Added option to start with custom starter (only available if you have beaten the game at least once)
+	Fixed Mankey paw working with No Guard
+	Removed alolan forms for self fusions (types not changed back yet)
+	Added secret area where starters can be caught in the wild
+	Added NPC selling EV berries on Kin Island
+4.5.2
+	Fixed the randomized mode starter preview window
+	Made the jumpluff in the golbat soar minigame not as high
+	Changed reward system for golbat soar minigame	
+	Lowered arceus's level
+	fixed route 21 rival battle
+	updated in-game credits
+	infinite splicers now work like super splicers
+	holding mankey paw now guarantees critical hits, but halves accuracy
+	fixed fusion repel glitch
+	Remade Silph Co. to be more like in the original games
+	Party screen now uses the body pokemon as icons instead of generic dna icon (test)
+4.5.1
+	implemented teleporter item
+	added a way to set the encounter rate / turn off wild Pokemon fusions after beating the game
+	fixed entei bug in victory road
+	fixed encounters on route 37 and mt. silver
+	fixed hp bars in ebs ui
+	altered the controls in golbat soar minigame
+	added update man in sevii island pokecenters
+	fixed berry forest zoroark in randomized mode
+	resort gorgeous now gives master ball instead of rare candy the first time (and every 10 times)
+	fixed ecruteak gym in randomized trainers mode
+ 	fixed safari zone crash
+	fixed p2 laboratory warp
+	fixed dive glitch
+	fixed pokedex number offset
+	fixed shiny stone not working on eevee (sylveon)
+	fixed wild encounter crash in randomized mode
+	changed default animations for water and fairy moves
+
+
+######## 	v4.5 		#########
+
+## Features ###
+	Added Sevii Islands (See new maps section)
+	Added DemIce's endgame mod
+	Replaced all fused Pokémon sprites (special thanks to @Aegide from the Discord server)
+	Added 36 new Pokémon
+		7 gift Pokémon
+		5 static encounters (non-legendary)
+		12 legendaries
+		12 evolutions
+	Added Chuck, Morty, Pryce and Jasmine as new postgame Gym Leaders
+
+
+## Fusion ##
+	fused pokemon EVs now determined by the body
+	Removed same species fusion restrictions.
+		Mega evolution and Alolan form sprites are now used for self-fusions when they exist
+		[Only the sprites and types change. They don't have the stats or abilities from their megaevolutions/alternate forms]
+	DNA Splicers now work according to the order selected
+		regular splicers average the pokemon's levels
+		super splicers take the highest level
+	Now possible to use Team Rocket's machine to create legendary triple fusions (limited to legendary trios) [LATE POSTGAME]
+		(The sprites are still very rough at the moment)
+
+### Pokemon ###
+	Now possible to start a game with Sinnoh starters
+	made Ho-oh/Lugia encounter level 60 (increased from 50)
+	Entei is now encountered in Victory Road.
+	Eusine now only requires catching the legendary birds & beasts for Arceus
+	Eggs can now be transfered directly to the PC.
+
+
+### tweaks / adjustments
+	Replaced Sabrina's Kadamoth by Esreon
+	Added Onix as a rare encounter in Mt. Moon
+	Nerfed Giovanni Celadon fight
+	Wild fusions are now less common
+	Added Johto music for Johto gym leaders
+	Elekid, Magby, Smoochum now evolve at lv. 25
+	Magmar & Electabuzz now evolve at lv. 50
+	Moved the Stone maniac from Lavender to Goldenrod
+	Removed badge stats boosts
+	Second rival fight is now optional, like in the original games
+
+#### Graphics / UI ###
+	Added throwing graphics for new pokeballs
+	Added some missing item icons
+	Randomized mode now shows a preview while choosing starters
+	Moved HP bars in NextGen Battle UI
+	Added versus images for Johto leaders
+	Replaced Pokemon icons by the gen 6 versions (thanks to /u/Endeolion on Reddit)
+	replaced Eusine's sprite
+
+## misc ##
+	Now possible to set species with debug mode
+	Added two minigames
+	Removed Rock Tunnel's portion of the Lavender Bell sidequest
+
+ 
+##  NEW MAPS ###
+	< Johto >
+	Ecruteak City, Mahogany Town, Lake of Rage
+	Route 37, Route 42, Route 43
+	Sinjoh Ruins, Newmoon Island
+
+	<Sevii>
+	Knot Island,Boon Island, Kin Island, Chrono Island
+	Kindle Road, Brine Road, Water Labyrinth, Resort Gorgeous
+	Sky Pillar, P2 Laboratory
+
+
+### Lag / Performance ###
+	Removed random rain on most routes
+	Removed wild double battles
+	Converted all battler sprites to indexed mode
+
+###Bug Fixes###
+	Fixed Goldenrod lotto
+	Fixed disappearing Pokémon bug in PC
+	Fixed light screen bug in tag battles
+	Fixed Pikachu minigame bug with coffee item
+	Bunch of other minor bugfixes
+
+
+
+
+
+
+## v4.4 ##
+- Added new move animation for Dig
+- Added Gligar trade in Fuschia City
+- Fighting Dojo is no longer blocked off before Silph Co.
+- Increased price of Unlimited Wonder Trade pass to 200k
+- Changed teleport pads in Saffron gym
+- Implemented Secret Capsule (no way to get it outside of random mode yet)
+- Made first part of Violet Gym a bit easier
+- Fixed gym types always being random even when option isn't selected(random mode)
+- Changed randomizer BST range selection menu
+- Added battle background for Power Plant
+- Added battle background for Seafoam Island
+- Happiness evolutions now evolve a bit earlier
+- Made the old boot easier to fish for when using the old rod
+
+- Fixed prompt for random trainers BST range not displaying when wild Pokemon aren't randomized
+- Fixed Pokedex crash
+- Fixed Johto Pokemon not appearing in Pokedex
+- Fixed body Pokemon not registering in Pokedex when unfusing
+- Slightly improved Pokedex loading speed
+
+### v4.3.3 ###
+Added TMs for Draining Kiss and Play Rough
+Added some item icons
+Altered some encounters
+Fixed fusion stats
+Fixed Porygon-Z not being able to learn TMs
+Made text color more legible in NxtGen UI mode
+
+
+### v4.3.2 ###
+Changed default UI style (classic UI still available in options)
+Fixed Mist Stone
+Changed Pewter city Machop trade for Tyrogue
+Kanto leaders can now be rematched after beating the E4 once. Giovanni and Johto leaders after Mt. Silver
+Added exception for Magnet Stone and Cell Battery when playing with randomized items (for the power plant puzzle)
+Added fix for postgame glitch without having to rebattle the league (update man -> fix game)
+Fixed strength message
+Added some boulders in Slowpoke Well
+
+### v4.3.1 ###
+Improved icon and pokemon sprites loading time
+Removed gender differences
+#########
+# v4.3 #
+#########
+Added the ability to start a game with Johto or Hoenn starters
+Super plicers now allow to choose the nature
+Fossils no longer available in Rock Smash pre-E4
+Added back the step limit in Safari Zone
+Nerfed Exp. All
+Saffron City gym is no longer required to trigger the Team Rocket event in Cinnabar Island
+Team Rocket event in Cinnabar no longer required to enter the mansion / gym
+	completing it gives the seagallop pass to go the sevii islands
+
+
+########
+# v4.2 #
+########
+Added Gym Leader rematches
+Stronger Elite 4 after Mt. Silver
+Switched some abilities for balance
+Added hotel in Violet City
+Removed some less family-friendly dialogue.
+
+Many bugfixes
+########
+# v4.1 #
+########
+###########################
+##	Fusion		###
+###########################
+Changed how abilities are passed: Fused Pokemon now get the first ability from the body and the second from the Abilities can now be chosen when fusing
+head (head's first if it only has one)
+	Can be chosen while fusing
+Switched the order of some abilities
+Fusing is back to being based on levels with regular splicers.
+	based on order selected with super splicers
+Added species for fused Pokemon in pokedex
+Fused Pokemon can now be bred
+Added color attribute in Pokedex for fusions
+The exp curve for fused Pokemon is now the same as the base body Pokemon
+Pokedex entry is now shown after fusing a new pokemon.
+Removed double letters in middle of fusion names
+
+###########################
+##	Story / Maps	###
+###########################
+Added Routes 26-27
+Added Victory Road
+Added Elite 4 + champion
+Changed Celadon City gym
+Added Goldenrod City (Accessible from the Magnet Train in Saffron City)
+Added the following postgame cities areas 
+	Azalea Town 
+	Violet City 
+	Cherrygrove City 
+	Blackthorn City
+	New Bark Town 
+	Ruins of Alph
+	Ilex Forest
+	Union Cave
+	Dark Cave
+	Routes 33, 32, 31, 30, 29, 
+Removed Mewtwo from the Team Rocket storyline
+Changed the boss battle in Saffron City
+Added event with Team Rocket in Goldenrod City before the 8th gym
+Removed Giovanni event in Crimson City
+ALtered Bill's dialogue
+Added Navel Rock
+Added Cerulean Cave
+Added ways to obtain every legendary from gen 1 and 2
+
+###########################
+##	Battles	###
+###########################
+Added 35 new Pokémon from generations 3 and 4
+	some only available post-game
+adjusted gym leaders levels
+Made Meowth and Persian normal types again
+Teleport now flees from the battle when used on or by a wild Pokémon.
+Removed in-battle visual effects from Sandstorm and Sunny Day
+Hidden Power now always deals neutral damage when used by Unown
+Gym Leaders and rival will now use healing items
+Nerfed eviolite
+
+###############################
+##	Game mechanics / UI ###
+###############################
+Added more options to customize random mode
+	the stats range can now be manually set in randomized mode.
+	added option to randomize wild pokemon to fused pokemon
+Battle UI style can now be selected in options
+Trainers now keep the same team during rematch in randomized mode
+	Gym leaders and trainers are still re-randomized each time
+Minor visual changes to the Pokedex
+Improved Pokedex entries navigation
+###########################
+##	NPCs	 	###
+###########################
+Added npc that swap a Pokemon's Pokeball (Goldenrod)
+Added NPC that makes traded pokemon not traded (postgame)
+Added travelling npc who sells flutes
+
+###########################
+##	Items	 	###
+###########################
+
+Added Exp. All (Route 15 gate)
+Super Splicers can now be purchased earlier
+	No longer unfuses traded Pokémon
+	Fuses according to order selected, not level
+	Reduced level loss when unfusing
+Added incubator
+Added Magnet Stone to evolve Magneton
+The gen 4 legendaries orbs now work on every Pokémon (not currently available in classic mode)
+Added TM97 to TM103
+
+###########################
+Miscellaneous
+###########################
+Added tool for converting pokemon from a 3.0 or before savefile
+Custom sprites can now be loaded directly from the CustomSprites folder
+Gym Leaders say their randomized type in randomized mode
+Gym Leader background changes according to type in randomized mode
+Surf now requires 5 badges instead of 6
+tiny mushrooms and big mushrooms are now rarer in viridian forest
+Completing the Pokédex (not counting fusions) unlocks Debug Mode
+Coin case is now obtained at the café like in the original games
+Removed footprints in pokedex entries
+Added water effect when standing in shallow water
+Additional storage box price now caps at $200 000
+Removed ability to fish while surfing
+
+##########################
+## BUG FIXES 		##
+##########################
+Learning moves after fusion now displays the correct Pokemon type
+fixed Moltres not appearing at volcano
+fixed music not playing after fusing
+fixed eggs showing type in pc
+
+#####################
+## OLDER CHANGES  ###
+#####################
+
+########
+# v4.0 #
+########
+-Added gen 2 Pokémon and cross-generation evolutions (all fusable - 75 625 pokémon total)
+-All Pokémon also have new sprites
+-Fusion is now determined by order selected
+-Added DNA Reverser
+-Made fusing animation a bit quicker
+-Normal/Flying Pokemon now only pass on the flying type (again)
+-When the two base Pokemon evolve at the same level, the two parts now evolve at the same time.
+-Fixed Sucker Punch
+-Baby Pokemon have colored eggs
+-Added several gen 2 Pokémon in the wild
+-Changed battle UI to use Elite Battle System (Luka SJ)
+-Updated evolution screen (EBS)
+-Added a few trades for some gen 2 Pokémon
+-Redid trainer teams to include more unfused Pokemon
+-Added Ice stone (evolves Eevee and Sneasel)
+-Hotel price lowered to 50
+-You can now choose how long you want to sleep in hotels
+-Changed how exp is calculated
+-Added new Pokemon to the intro screen
+-Tipping clowns raise your pokemon's happiness by a little bit
+-Battles yield 10% more exp and money when battle style Set is used
+
+
+
+2018-03-25
+Bug fixes
+Trainers and wild pokemon can now be randomized independantly. You may have to go see the update man if you were already playing a randomized game (*Update man -> Advanced game options -> Change randomizer options to change the settings)
+Static encounters can now be randomized
+Added Dubious Disc as a trainer house prize
+
+2018-03-02
+Added fairy wind + altered some movesets
+Weather effects are now shown during battles
+pokemon will not learn moves during fusion if A and B buttons are pressed simultaneously (X and C).
+Removed 25% stats boost to fused pokemon in order to make regular pokemon more viable
+Giovanni Mt. Moon fight is no longer randomized
+Giovanni Silph Co. back to level 45.
+Rival actually uses the other two pokemon fused together for the first battle in randomized mode.
+Added a way to buy Super Splicers (silph co. 8 badges)
+Several bugs fixed
+
+2018-02-19
+Fixed missing Typhlosion fusions
+Unfused pokemon now have their own sprite instead of using the sprite of the fusion with themselves
+item randomizer now only randomizes item balls and hidden items
+fixed pokeballs positioning when catching pokemon
+modified resizing ratio to limit bad compression
+Added pagination to pokedex entries (still have to stop it from cutting words in half, but at least now we get to read the full entries)
+
+2018-16-02
+Fixed some positioning issues
+Subtle changes to the intro screen
+
+2018-15-02
+Added items and TM randomizer
+Added stones NPC in Lavender Town
+
+2018-12-02
+Fixed Up-grade and Dubious Disc
+Fixed legendary birds crash
+
+
+
+
+
+OLDER VERSIONS
+
+v3.1
+Bugfixes and various tweaks
+Changed legendary bird event at Cinnabar Island
+Added seafoam Islands
+Randomized Mode: Gyms are now assigned a random type (only works with a new game)
+Added Surfboard
+Other legendary birds can now be fought after the 8th gym
+
+v3.0
+-DNA Splicers can now unfuse Pokémon
+	Cannot be used on Pokémon obtained in a trade
+-Added a preview screen before fusing Pokémon
+-Held items are now automatically returned to the bag when fusing
+-Added weight and height fields to fusions
+-Added prompt to select which moves to keep upon fusion
+-Fainted Pokémon cannot be fused anymore (duplication glitch)
+-Added new intro
+-Modified Mt. Moon Team Rocket sequence
+-Added Crimson City, north of Cerulean Cape
+-Expanded route 18
+-Added Cycling Road
+-Added Routes 19,20,21
+-Added Saffron City
+-Added Cinnabar Island
+-Added Power Plant
+-Added crys to fused Pokemon
+-Meowth and Persian are now pure Dark types. All other Pokémon are back to their original typings
+-Nerfed Teleport
+-Added Rock Smash overworld 
+-Added Surf overworld
+-Buffed Erika's gym team
+-Added two more Fairy moves: Draining Kiss and Play Rough
+-Poisonned Pokemon no longer faint in the field
+-Starters now use their gen 3 movesets
+-Added Exp. Share
+-DNA Splicers now cheaper
+-Pokédex can now be used in battles to identify the opposing Pokemon's type. It also gives your team a boost according to your badge count.
+-Added Gender ball, Trade ball, Ability ball, Virus ball, Shiny ball and Perfect ball
+-Added HM items (Cut: Machete, Rock Smash: Pickaxe, Surf: Surfboard, Flash: Lantern)
+-Added chance to get items while using Rock Smash (like in hgss)
+-Added a chance to get random items while fishing
+-Pokémon specific items (thick club, etc.) now work for fused Pokemon when they have the right body
+-Updated evolution cutscene
+-Made night not as dark
+-Changed Vermillion city tiles
+-Changed Vermillion city music
+-Added S.S. Anne outside deck
+-New title screen background and logo (colour depends on version)
+-Revamped the UI
+-Made water an animated autotile
+-Added support for perspective map view mode(3d mode)
+-Changed town map graphic
+-Added WonderTrade
+-Added berry master npc
+-Added maniacs that buy rare items in Pewter, Cerulean, Celadon, Saffron,  Route 18
+-Added trades in Viridian city, Pewter city, Vermillion City, Celadon City
+-Added clefairy event at mt. moon square
+-Added quests in Vermillion City, Cerulean City, Crimson City
+-Added second clerk in pokemarts selling special pokeballs and gems
+-Added several move tutors scattered everywhere
+-Added IV checker in (Saffron City
+-Added groomer in Fuchsia City)
+-Added move deleter in (Vermillion City)
+-Added happiness checker (Cerulean City)
+-Added psychiatrist npc to change natures (Cinnabar Island)
+-Added npc to increase number of storage boxes (Bill's Lighthouse) 
+-Viridian City mushrooms now respawn daily
+-Rival can now be named by talking to his mom.
+-Made it possible to go to Saffron early by paying a toll. Most events/buildings are blocked until after badge 5.
+-Rematches no longer give money
+-Move relearner is now cheaper
+-Added Fresh water guy in gyms
+-Fixed glitch where some fusions had the wrong icon
+-Removed 45k redundant icon files
+-Fixed bug where fusions became monotype if p1's 1st type was the same as p2's 2nd type.
+-Fixed escape rope not working
+-Capped stats at 255 to avoid overflow
+-Fixed Flash glitch and made radius bigger
+-Fixed wobbly bicycle
+-Fixed repels ending too quickly
+-Fixed several other minor glitches (and possibly created several more when adding new shit)
+-Divided the game into Red version and Blue version.
+	In Blue version, all trainer Pokemon fusions are reversed.
+	The rest is pretty much identical, except for a few trades. Encounters are 100% the same.
+-Redid the internal name system for fusions to allow for eventually adding more Pokemon
+-Added optional Autosave option (Saves in Pokemon centers)
+-Added screen to set controls
+-Added randomizer mode
+-Added turbo button
+-Made HMs forgettable at any time (don't be stupid and you won't get stuck)
+-Made time slower
+-Increased number of characters allowed for nicknames
+-Made bike a bit faster. Can be improved with a sidequest.
+
+2.2
+
+    Bugfixes
+    Added two new quests in Celadon City hotel
+    Added items in Safari Zone
+
+2.1
+
+    Bugfixes
+    Added Eevee in Celadon City
+
+2.0
+
+    Added Rock Tunnel, Lavender Town, Pokémon Tower, Celadon City, Celadon Sewers, Fuchsia City, and all the routes in between.
+    Story up to Fuchsia City (5th badge)
+    Added female protagonist
+    Revamped several older maps such as Pallet Town, Viridian City, Pewter City, Route 3 and Route 9.
+    Added hotels in most cities as a hub for sidequests
+    Added dozens of sidequests
+    Added music when seen by trainers
+    Added unreal time system: 1 day = 24 minutes
+    Added a few custom fused Pokémon sprites
+    Added TMs/HMs
+    Changed a few Pokémon types (see FAQ)
+    Added Trainer House: Battle facility where you fight teams of random Pokémon to earn points.
+    Added new intro at the start of a new game
+    Changed message boxes to BW-styled speech bubbles
+    And a lot more stuff for you to discover on your own!
+1.7
+
+    New maps for Viridian Forest, Viridian City, Pewter City, Route 1, Route 3, and Route 9.
+    Updated Gym Leader teams
+    Fixed the bug with Cut
+    Removed Aerodactyl gift from the museum
+
+1.6
+
+    Fixed evolution bug
+    Resized fused Pokemon sprites
+    Added shinies
+    Added button to toggle auto-run
+    Added small surprise at the end of the demo!
+    Various small bug fixes
+
+1.5
+
+    Increased chance of encountering regular Pokémon
+    Added items in various locations
+    Modified types (Hopefully this doesn't mess up your teams too much, sorry!)
+    Added screen for fusing Pokémon with the DNA Splicers
+    Slightly modified encounters
+    Changed the way stats are calculated (body: HP, ATK, DEF + 10 , head: SDEF, SATK, SPD +10)
+    Fusions are now determined according to gender
+
+Bugs fixed
+
+    Fixed Pokemon species having missing names
+    Fixed fused Pokémon stats
+    Fixed player not being able to use Cut after talking to the Captain on the S.S. Anne
+    Game crashing when player encounters a double battle with less than 1 Pokemon in party
+    Player being sent to a Pokemart instead of home when blacking out before entering Viridian City's Pokemon Center.
+    Blue not taking the pokeballs in prof Oak's lab
+    Game crashing when player speaks with Pokemart assistant on Route 1
+    Various clipping bugs
+    House in Viridian City teleporting the player into a pole
+
+1.4 - 1.4.1 - 1.4.2
+
+    Minor tweaks and fixes
+
+1.3:
+
+    Various bugfixes
+    Included the dll with the RMXP library for compatibility issues
+    Added Route 6
+    Added Vermillion City
+    Added Route 9
+    Added Route 10
+    Added Route 11
+    Added wild double battles
+    Added time of the day lighting (too subtle maybe?)
+
+1.2:
+
+    Added the Magikarp vendor on route 3
+
+1.1 :
+
+    Fixed a few bugs
+    Added Aerodactyl, Kabuto and Omanyte when you get their fossils for the sake of having more variety in the early game (will likely be removed once Cinnabar Island is reachable)
+
+

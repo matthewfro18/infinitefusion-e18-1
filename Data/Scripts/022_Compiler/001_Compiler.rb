@@ -16,21 +16,21 @@ def pbGetExceptionMessage(e,_script="")
   end
   if emessage && !safeExists?("Game.rgssad") && !safeExists?("Game.rgss2a")
     emessage = emessage.gsub(/uninitialized constant PBItems\:\:(\S+)/) {
-       "The item '#{$1}' is not valid. Please add the item\r\nto the list of items in the editor. See the wiki for more information." }
+      "The item '#{$1}' is not valid. Please add the item\r\nto the list of items in the editor. See the wiki for more information." }
     emessage = emessage.gsub(/undefined method `(\S+?)' for PBItems\:Module/) {
-       "The item '#{$1}' is not valid. Please add the item\r\nto the list of items in the editor. See the wiki for more information." }
+      "The item '#{$1}' is not valid. Please add the item\r\nto the list of items in the editor. See the wiki for more information." }
     emessage = emessage.gsub(/uninitialized constant PBTypes\:\:(\S+)/) {
-       "The type '#{$1}' is not valid. Please add the type\r\nto the PBS/types.txt file." }
+      "The type '#{$1}' is not valid. Please add the type\r\nto the PBS/types.txt file." }
     emessage = emessage.gsub(/undefined method `(\S+?)' for PBTypes\:Module/) {
-       "The type '#{$1}' is not valid. Please add the type\r\nto the PBS/types.txt file." }
+      "The type '#{$1}' is not valid. Please add the type\r\nto the PBS/types.txt file." }
     emessage = emessage.gsub(/uninitialized constant PBTrainers\:\:(\S+)$/) {
-       "The trainer type '#{$1}' is not valid. Please add the trainer\r\nto the list of trainer types in the Editor. See the wiki for\r\nmore information." }
+      "The trainer type '#{$1}' is not valid. Please add the trainer\r\nto the list of trainer types in the Editor. See the wiki for\r\nmore information." }
     emessage = emessage.gsub(/undefined method `(\S+?)' for PBTrainers\:Module/) {
-       "The trainer type '#{$1}' is not valid. Please add the trainer\r\nto the list of trainer types in the Editor. See the wiki for\r\nmore information." }
+      "The trainer type '#{$1}' is not valid. Please add the trainer\r\nto the list of trainer types in the Editor. See the wiki for\r\nmore information." }
     emessage = emessage.gsub(/uninitialized constant PBSpecies\:\:(\S+)$/) {
-       "The Pokemon species '#{$1}' is not valid. Please\r\nadd the species to the PBS/pokemon.txt file.\r\nSee the wiki for more information." }
+      "The Pokemon species '#{$1}' is not valid. Please\r\nadd the species to the PBS/pokemon.txt file.\r\nSee the wiki for more information." }
     emessage = emessage.gsub(/undefined method `(\S+?)' for PBSpecies\:Module/) {
-       "The Pokemon species '#{$1}' is not valid. Please\r\nadd the species to the PBS/pokemon.txt file.\r\nSee the wiki for more information." }
+      "The Pokemon species '#{$1}' is not valid. Please\r\nadd the species to the PBS/pokemon.txt file.\r\nSee the wiki for more information." }
   end
   emessage.gsub!(/Section(\d+)/) { $RGSS_SCRIPTS[$1.to_i][1] }
   return emessage
@@ -684,7 +684,7 @@ def pbWriteCsvRecord(record,file,schema)
           file.write(rec[i]) unless hasenum
         end
       else   # Any other record type
-        file.write(rec[i].inspect)
+      file.write(rec[i].inspect)
       end
     else
       file.write(rec[i].inspect)
@@ -1190,47 +1190,47 @@ def pbCompiler
   return if !$DEBUG
   begin
     dataFiles = [
-       "berry_plants.dat",
-       "encounters.dat",
-       "form2species.dat",
-       "items.dat",
-       "map_connections.dat",
-       "metadata.dat",
-       "moves.dat",
-       "phone.dat",
-       "regional_dexes.dat",
-       "shadow_movesets.dat",
-       "species.dat",
-       "species_eggmoves.dat",
-       "species_evolutions.dat",
-       "species_metrics.dat",
-       "species_movesets.dat",
-       "tm.dat",
-       "town_map.dat",
-       "trainer_lists.dat",
-       "trainer_types.dat",
-       "trainers.dat",
-       "types.dat",
-       "Constants.rxdata"
+        "berry_plants.dat",
+        "encounters.dat",
+        "form2species.dat",
+        "items.dat",
+        "map_connections.dat",
+        "metadata.dat",
+        "moves.dat",
+        "phone.dat",
+        "regional_dexes.dat",
+        "shadow_movesets.dat",
+        "species.dat",
+        "species_eggmoves.dat",
+        "species_evolutions.dat",
+        "species_metrics.dat",
+        "species_movesets.dat",
+        "tm.dat",
+        "town_map.dat",
+        "trainer_lists.dat",
+        "trainer_types.dat",
+        "trainers.dat",
+        "types.dat",
+        "Constants.rxdata"
     ]
     textFiles = [
-       "abilities.txt",
-       "berryplants.txt",
-       "connections.txt",
-       "encounters.txt",
-       "items.txt",
-       "metadata.txt",
-       "moves.txt",
-       "phone.txt",
-       "pokemon.txt",
-       "pokemonforms.txt",
-       "shadowmoves.txt",
-       "tm.txt",
-       "townmap.txt",
-       "trainerlists.txt",
-       "trainers.txt",
-       "trainertypes.txt",
-       "types.txt"
+        "abilities.txt",
+        "berryplants.txt",
+        "connections.txt",
+        "encounters.txt",
+        "items.txt",
+        "metadata.txt",
+        "moves.txt",
+        "phone.txt",
+        "pokemon.txt",
+        "pokemonforms.txt",
+        "shadowmoves.txt",
+        "tm.txt",
+        "townmap.txt",
+        "trainerlists.txt",
+        "trainers.txt",
+        "trainertypes.txt",
+        "types.txt"
     ]
     latestDataTime = 0
     latestTextTime = 0

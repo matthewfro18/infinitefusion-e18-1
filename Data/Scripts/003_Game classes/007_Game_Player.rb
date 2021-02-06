@@ -420,8 +420,10 @@ def pbGetPlayerCharset(meta,charset,trainer=nil,force=false)
                   $game_player.charsetData[2]==outfit
   end
   $game_player.charsetData = [$PokemonGlobal.playerID,charset,outfit] if $game_player
+
   ret = meta[charset]
   ret = meta[1] if !ret || ret==""
+
   if pbResolveBitmap("Graphics/Characters/"+ret+"_"+outfit.to_s)
     ret = ret+"_"+outfit.to_s
   end

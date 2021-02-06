@@ -11,6 +11,7 @@ class PokemonGlobalMetadata
   attr_accessor :fishing
   attr_accessor :runningShoes
   attr_accessor :runtoggle
+  attr_accessor :frepel
   # Player data
   attr_accessor :startTime
   attr_accessor :stepcount
@@ -71,6 +72,7 @@ class PokemonGlobalMetadata
     @fishing              = false
     @runningShoes         = false
     @runtoggle            = false
+    @frepel               = 0
     # Player data
     @startTime            = Time.now
     @stepcount            = 0
@@ -86,7 +88,7 @@ class PokemonGlobalMetadata
     @snagMachine          = false
     @creditsPlayed        = false
     # Pokédex
-    numRegions            = pbLoadRegionalDexes.length
+    numRegions            = 1#pbLoadRegionalDexes.length
     @pokedexUnlocked      = []
     @pokedexViable        = []
     @pokedexDex           = (numRegions==0) ? -1 : 0

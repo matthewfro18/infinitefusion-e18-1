@@ -7,7 +7,7 @@ module PBTerrain
   Sand            = 3
   Rock            = 4
   DeepWater       = 5
-  StillWater      = 6
+  WaterCurrent      = 6
   Water           = 7
   Waterfall       = 8
   WaterfallCrest  = 9
@@ -18,6 +18,7 @@ module PBTerrain
   SootGrass       = 14
   Bridge          = 15
   Puddle          = 16
+  StillWater      = 17
 
   def self.isSurfable?(tag)
     return PBTerrain.isWater?(tag)
@@ -25,23 +26,26 @@ module PBTerrain
 
   def self.isWater?(tag)
     return tag==PBTerrain::Water ||
-           tag==PBTerrain::StillWater ||
-           tag==PBTerrain::DeepWater ||
-           tag==PBTerrain::WaterfallCrest ||
-           tag==PBTerrain::Waterfall
+        tag==PBTerrain::StillWater ||
+        tag==PBTerrain::DeepWater ||
+        tag==PBTerrain::WaterfallCrest ||
+        tag==PBTerrain::WaterCurrent ||
+        tag==PBTerrain::Waterfall
   end
 
   def self.isPassableWater?(tag)
     return tag==PBTerrain::Water ||
-           tag==PBTerrain::StillWater ||
-           tag==PBTerrain::DeepWater ||
-           tag==PBTerrain::WaterfallCrest
+        tag==PBTerrain::StillWater ||
+        tag==PBTerrain::DeepWater ||
+        tag==PBTerrain::WaterCurrent ||
+        tag==PBTerrain::WaterfallCrest
   end
 
   def self.isJustWater?(tag)
     return tag==PBTerrain::Water ||
-           tag==PBTerrain::StillWater ||
-           tag==PBTerrain::DeepWater
+        tag==PBTerrain::StillWater ||
+        tag==PBTerrain::WaterCurrent ||
+        tag==PBTerrain::DeepWater
   end
 
   def self.isDeepWater?(tag)
@@ -67,6 +71,10 @@ module PBTerrain
 
   def self.isLedge?(tag)
     return tag==PBTerrain::Ledge
+  end
+
+  def self.isWaterCurrent?(tag)
+    return tag==PBTerrain::WaterCurrent
   end
 
   def self.isIce?(tag)

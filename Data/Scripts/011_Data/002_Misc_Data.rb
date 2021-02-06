@@ -167,7 +167,7 @@ module PokemonSpeciesData
       "Height"           => [SpeciesHeight,        "f"],
       "Weight"           => [SpeciesWeight,        "f"],
       "Color"            => [SpeciesColor,         "e", :PBColors],
-      "Shape"            => [SpeciesShape,         "u"],
+      #"Shape"            => [SpeciesShape,         "u"],
       "Moves"            => [0,                    "*ue", nil, :PBMoves],
       "Kind"             => [0,                    "s"],
       "Pokedex"          => [0,                    "q"]

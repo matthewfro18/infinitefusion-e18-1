@@ -57,12 +57,12 @@ def pbLoadMetadata
   if !$PokemonTemp.metadata
     $PokemonTemp.metadata = load_data("Data/metadata.dat") || []
   end
-  return $PokemonTemp.metadata
 end
 
 def pbGetMetadata(map_id, metadata_type)
   meta = pbLoadMetadata
-  return meta[map_id][metadata_type] if meta[map_id]
+  return if meta == nil
+  return meta[map_id][metadata_type+1] if meta[map_id]
   return nil
 end
 
