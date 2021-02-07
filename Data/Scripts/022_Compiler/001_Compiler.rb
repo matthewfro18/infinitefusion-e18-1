@@ -1187,6 +1187,7 @@ def pbCompileAllData(mustCompile)
 end
 
 def pbCompiler
+  #@return
   return if !$DEBUG
   begin
     dataFiles = [
