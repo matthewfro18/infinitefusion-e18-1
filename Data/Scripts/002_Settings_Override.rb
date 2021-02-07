@@ -18,6 +18,7 @@ RIVAL_STARTER_PLACEHOLDER_SPECIES = 151 #(MEW)
 #OW_FRAMERATE = 40
 BATTLE_FRAMERATE_MULTI = 1.5
 BASE_FRAMERATE = 40
+TURBO_FRAMERATE = 80
 
 #===============================================================================
 # * The maximum level Pokémon can reach.
@@ -404,12 +405,6 @@ RANDOM_HIDDEN_MAP_LIST =  [8,109,431,446,402,403,467,468,10,23,167,16,19,78,185,
 ]
 #the last line is legendary maps
 
-
-#===============================================================================
-# * Whether names can be typed using the keyboard (true) or chosen letter by
-#      letter as in the official games (false).
-#===============================================================================
-USEKEYBOARDTEXTENTRY = true
 
 # Various config constants used for sprite scaling
 # used to scale the trainer bitmaps to 200%

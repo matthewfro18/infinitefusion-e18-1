@@ -129,9 +129,25 @@ module Input
     if trigger?(Input::F7)
       pbDebugF7
     end
+    if $game_variables
+      pbTurboToggle()
+    end
   end
 end
 
+def pbTurboToggle()
+  if trigger?(Input::CTRL)
+    pbSEPlay("expfull") if FileTest.audio_exist?("Audio/SE/expfull")
+    pbTurbo()
+  end
+end
 
+def pbTurbo()
+  if Graphics.frame_rate==BASE_FRAMERATE
+    Graphics.frame_rate =TURBO_FRAMERATE
+  else
+    Graphics.frame_rate=BASE_FRAMERATE
+  end
+end
 
 pbSetUpSystem

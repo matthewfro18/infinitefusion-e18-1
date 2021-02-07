@@ -26,7 +26,7 @@ class PokemonSystem
     @runstyle    = 0     # Run key functionality (0=hold to run, 1=toggle auto-run)
     @bgmvolume   = 100   # Volume of background music and ME
     @sevolume    = 100   # Volume of sound effects
-    @textinput   = 0     # Text input mode (0=cursor, 1=keyboard)
+    @textinput   = 1     # Text input mode (0=cursor, 1=keyboard)
   end
 
   def textskin;  return @textskin || 0;    end
@@ -47,6 +47,7 @@ end
 #===============================================================================
 $SpeechFrames = [
   MessageConfig::TextSkinName,   # Default: speech hgss 1
+  "speech hgss 1",
   "speech hgss 2",
   "speech hgss 3",
   "speech hgss 4",
@@ -109,11 +110,11 @@ $VersionStyles = [
 
 def pbSettingToTextSpeed(speed)
   case speed
-  when 0; return 2
-  when 1; return 1
-  when 2; return -2
+  when 0; return 1
+  when 1; return -2
+  when 2; return -999
   end
-  return MessageConfig::TextSpeed || 1
+  return MessageConfig::TextSpeed || -2
 end
 
 
@@ -458,12 +459,16 @@ class PokemonOption_Scene
            end
          }
        ),
-       EnumOption.new(_INTL("Text Speed"),[_INTL("Slow"),_INTL("Normal"),_INTL("Fast")],
+       EnumOption.new(_INTL("Text Speed"),[_INTL("Slow"),_INTL("Normal"),_INTL("Instant")],
          proc { $PokemonSystem.textspeed },
          proc { |value|
            $PokemonSystem.textspeed = value
            MessageConfig.pbSetTextSpeed(pbSettingToTextSpeed(value))
          }
+       ),
+       EnumOption.new(_INTL("Fusion Icons"),[_INTL("Combined"),_INTL("DNA")],
+                      proc { $game_variables[220]},
+                      proc {|value| $game_variables[220]=value }
        ),
        EnumOption.new(_INTL("Battle Effects"),[_INTL("On"),_INTL("Off")],
          proc { $PokemonSystem.battlescene },
@@ -517,18 +522,18 @@ class PokemonOption_Scene
              ObjectSpace.each_object(TilemapLoader) { |o| o.updateClass if !o.disposed? }
            end
          }
-       ),
-       EnumOption.new(_INTL("Screen Border"),[_INTL("Off"),_INTL("On")],
-         proc { $PokemonSystem.border },
-         proc { |value|
-           oldvalue = $PokemonSystem.border
-           $PokemonSystem.border = value
-           if value!=oldvalue
-             pbSetResizeFactor($PokemonSystem.screensize)
-             ObjectSpace.each_object(TilemapLoader) { |o| o.updateClass if !o.disposed? }
-           end
-         }
        )
+    #EnumOption.new(_INTL("Screen Border"),[_INTL("Off"),_INTL("On")],
+    #     proc { $PokemonSystem.border },
+    #     proc { |value|
+    #       oldvalue = $PokemonSystem.border
+    #       $PokemonSystem.border = value
+    #       if value!=oldvalue
+    #         pbSetResizeFactor($PokemonSystem.screensize)
+    #         ObjectSpace.each_object(TilemapLoader) { |o| o.updateClass if !o.disposed? }
+    #       end
+    #     }
+    #   )
     ]
     @PokemonOptions = pbAddOnOptions(@PokemonOptions)
     @sprites["option"] = Window_PokemonOption.new(@PokemonOptions,0,

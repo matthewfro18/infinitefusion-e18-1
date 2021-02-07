@@ -4,10 +4,40 @@
 #		Changelog		#
 #########################################
 4.8.7
-	Moved Moltres to Mt. Ember
-	Added roaming Latias / Latios (event starts by interacting with the TV in Boon Island's Pokémon Center)
-	Nerfed E4 levels (not including rematch)
-	Updated camper battle sprites to the BW versions
+	(WIP) Ported the game to Pokémon Essentials 18
+		Additions:
+			- Performance improvements
+			- MKXP support
+			- Support for new battle mechanics (terrains, triple battles, etc.)
+			- Registering multiple items at once
+			- Full screen support
+			- New options in menu
+			- Support for all other Essentials 18 and Essentials 17 features
+			
+
+		Removals
+			- Elite Battle System (includes EBS and NxtGen UI battle UIs, battle motion, animated sprites support, etc.)
+			- Gen 5 style bag
+		Pokémon Essentials changelog: https://essentialsdocs.fandom.com/wiki/Change_log
+
+	Game events
+	###########
+	- Moved Moltres to Mt. Ember
+	- Added roaming Latias / Latios (event starts by interacting with the TV in Boon Island's Pokémon Center)
+	- Added Deoxys event
+	- (WIP) Added Jirachi event
+	- Nerfed E4 levels (not including rematch)
+
+
+	Graphics
+	########
+	- Updated camper battle sprites to the BW versions
+
+	Miscellaneous
+	#############
+	- Added "Instant" text speed option
+
+	
 
 4.8.6 (debug build)
 	Removed the following moves' effects:
