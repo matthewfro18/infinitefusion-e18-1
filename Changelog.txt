@@ -32,11 +32,12 @@
 	Graphics
 	########
 	- Updated camper battle sprites to the BW versions
+	- Modified the default textbox appearance
 
 	Miscellaneous
 	#############
 	- Added "Instant" text speed option
-
+	- Reduced DNA splicers price to 300
 	
 
 4.8.6 (debug build)

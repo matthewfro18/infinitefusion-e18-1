@@ -58,6 +58,7 @@ class PokemonSprite < SpriteWrapper
     @_iconbitmap.dispose if @_iconbitmap
     @_iconbitmap = (pokemon) ? pbLoadPokemonBitmapSpecies(pokemon,species,back) : nil
     self.bitmap = (@_iconbitmap) ? @_iconbitmap.bitmap : nil
+    self.mirror if back
     changeOrigin
   end
 

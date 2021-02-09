@@ -526,7 +526,7 @@
 519,GRACIDEA,Spaceship Part,Spaceship Parts,8,0,"Debris from a mysterious alien spaceship.",5,0,6,
 520,AURORATICKET,Navel Ticket,Navel Tickets,8,0,A ticket required to board a ship to a faraway island. It glows beautifully.,0,0,6,
 521,OLDSEAMAP,Old Sea Map,Old Sea Maps,8,0,A faded sea chart that shows the way to a certain island.,0,0,6,
-522,DNASPLICERS,DNA Splicers,DNA Splicers,1,500,A splicer that fuses the DNA of any two Pokemon into a single entirely new Pokemon.,1,0,0,
+522,DNASPLICERS,DNA Splicers,DNA Splicers,1,300,A splicer that fuses the DNA of any two Pokemon into a single entirely new Pokemon.,1,0,0,
 523,REVEALGLASS,Tracker,Trackers,8,0,"It's a device that can track a Pokémon's location with a GPS chip.",5,0,6,
 524,OVALCHARM,Oval Charm,Oval Charms,8,0,An oval charm said to increase the chance of Eggs being found at the Day Care.,0,0,6,
 525,SHINYCHARM,Shiny Charm,Shiny Charms,8,0,A shiny charm said to increase the chance of finding a Shiny Pokémon.,0,0,6,

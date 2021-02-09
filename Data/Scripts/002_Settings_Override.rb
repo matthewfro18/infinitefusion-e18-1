@@ -415,3 +415,6 @@ POKEMONSPRITESCALE = 0.66666
 
 # used to scale the backsprite for battle perspective (200%)
 BACKSPRITESCALE =   0.875       #0.8
+
+BATTLER_Y_OFFSET = 20
+OPPONENT_Y_OFFSET=20

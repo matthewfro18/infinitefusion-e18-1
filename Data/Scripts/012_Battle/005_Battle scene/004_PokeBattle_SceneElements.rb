@@ -548,8 +548,11 @@ class PokemonBattlerSprite < RPG::Sprite
     @_iconBitmap.dispose if @_iconBitmap
     @_iconBitmap = pbLoadPokemonBitmap(@pkmn,back)
     self.bitmap = (@_iconBitmap) ? @_iconBitmap.bitmap : nil
+    self.mirror = true if back
     pbSetPosition
+    # @spriteY += back ? BATTLER_Y_OFFSET : OPPONENT_Y_OFFSET
   end
+
 
   # This method plays the battle entrance animation of a Pokémon. By default
   # this is just playing the Pokémon's cry, but you can expand on it. The
