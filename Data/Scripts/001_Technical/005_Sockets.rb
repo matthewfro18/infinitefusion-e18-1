@@ -439,10 +439,11 @@ class Socket
   end
 
   def recvTimeout
-    if select(10)==0
-      raise Hangup.new("Timeout")
-    end
-    return recv(1)
+    return
+    #if select(10)==0
+    #  raise Hangup.new("Timeout")
+    #end
+    #return recv(1)
   end
   #--------------------------------------------------------------------------
   # * Gets

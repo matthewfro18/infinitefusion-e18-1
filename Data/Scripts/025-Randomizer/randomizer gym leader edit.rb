@@ -410,7 +410,7 @@ def getCustomSpeciesList()
     body = splitPoke[1].to_i
     fused = (body*NB_POKEMON)+head
     if fused <= maxDexNumber && fused > 0
-         speciesList <<fused 
+         speciesList << fused
     end
     
   end

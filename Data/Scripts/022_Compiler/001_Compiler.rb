@@ -196,8 +196,8 @@ def pbEachFileSectionEx(f)
       end
     end
     lineno += 1
-    Graphics.update if lineno%500==0
-    Win32API.SetWindowText(_INTL("Processing {1} line {2}",FileLineData.file,lineno)) if lineno%50==0
+    Graphics.update if lineno%10==0
+    #Win32API.SetWindowText(_INTL("Processing {1} line {2}",FileLineData.file,lineno)) if lineno%50==0
   }
   yield lastsection,sectionname  if havesection
 end
@@ -1187,7 +1187,7 @@ def pbCompileAllData(mustCompile)
 end
 
 def pbCompiler
-  #@return
+  return
   return if !$DEBUG
   begin
     dataFiles = [

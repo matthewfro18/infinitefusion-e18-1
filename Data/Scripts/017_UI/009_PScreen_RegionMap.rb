@@ -347,9 +347,11 @@ class PokemonRegionMapScreen
   end
 
   def pbStartFlyScreen
-    @scene.pbStartScene(false,1)
-    ret = @scene.pbMapScene(1)
-    @scene.pbEndScene
+    #@scene.pbStartScene(false,1)
+    #ret = @scene.pbMapScene(1)
+    #@scene.pbEndScene
+    ret = pbBetterRegionMap(nil, true, true)
+    return ret
     return ret
   end
 
@@ -362,10 +364,6 @@ end
 
 
 
-def pbShowMap(region=-1,wallmap=true)
-  pbFadeOutIn {
-    scene = PokemonRegionMap_Scene.new(region,wallmap)
-    screen = PokemonRegionMapScreen.new(scene)
-    screen.pbStartScreen
-  }
+def pbShowMap(region=0,wallmap=true)
+  pbBetterRegionMap(region, true, false)
 end

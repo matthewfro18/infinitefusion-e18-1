@@ -1,3 +1,25 @@
+.gitignore
+Graphics/Battlers/
+Graphics/CustomBattlers/
+Graphics/CustomBattlers_backup/
+data_backup/
+PBS/pokemon.txt
+PBS/pokemon_381.txt
+PBS/pokemon_419.txt
+PBS/pokemon_fr.txt
+PBS/pokemon-fr-iso.txt
+etc/
+Saves/
+Data - Copy/
+extendtext.exe
+fluidsynth.dll
+mkxp.json
+mkxp-z.exe
+Data.zip
+patch/
+build/
+bin/
+
 # Audio and Graphics folders
 Audio/
 Graphics/
@@ -15,27 +37,3 @@ RGSS*.dll
 # Temp files
 
 ~*
-
-
-/.gitignore
-/Graphics/Battlers/
-/Graphics/CustomBattlers/
-/Graphics/CustomBattlers_backup/
-/data_backup/
-/PBS/pokemon.txt
-/PBS/pokemon_381.txt
-/PBS/pokemon_419.txt
-/PBS/pokemon-all.txt
-/PBS/pokemon_fr.txt
-/PBS/pokemon-fr-iso.txt
-/etc/
-/Saves/
-/Data - Copy/
-/extendtext.exe
-/fluidsynth.dll
-/mkxp.json
-/mkxp-z.exe
-/Data.zip
-/patch/
-/build/
-/bin/

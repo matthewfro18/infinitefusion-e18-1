@@ -44,10 +44,10 @@ def mainFunctionDebug
     $scene = pbCallTitle
     $scene.main until $scene.nil?
     Graphics.transition(20)
-  rescue Hangup
-    pbPrintException($!) if !$DEBUG
-    pbEmergencySave
-    raise
+    #rescue Hangup
+    #pbPrintException($!) if !$DEBUG
+    #pbEmergencySave
+    #raise
   end
 end
 

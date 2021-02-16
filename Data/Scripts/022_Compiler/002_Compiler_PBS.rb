@@ -744,9 +744,9 @@ def pbCompilePokemonData
         raise _INTL("A Pokémon species can't be numbered 0 (PBS/pokemon.txt)")
       end
       # Raise an error if the species ID has already been defined.
-      if speciesData[speciesID]
-        raise _INTL("Species ID number '{1}' is used twice.\r\n{2}",speciesID,FileLineData.linereport)
-      end
+      #if speciesData[speciesID]
+      #  raise _INTL("Species ID number '{1}' is used twice.\r\n{2}",speciesID,FileLineData.linereport)
+      #end
       # Create array to store compiled data in.
       speciesData[speciesID] = []
       # Copy Type1 into Type2 if Type2 is undefined. (All species must have two
@@ -773,6 +773,7 @@ def pbCompilePokemonData
           # Compile value for key.
           schema = hash[key]
           value = pbGetCsvRecord(contents[key],key,schema)
+
           # Modify value as required.
           case key
           when "Height", "Weight"
@@ -826,6 +827,7 @@ def pbCompilePokemonData
           when "Pokedex"
             pokedexEntries[speciesID] = value
           when "InternalName"
+            Win32API.SetWindowText(value.to_s)
             constants += "#{value}=#{speciesID}\r\n"
           else   # All other data
             speciesData[speciesID][schema[0]] = value
@@ -906,6 +908,12 @@ def pbCompilePokemonData
   MessageTypes.setMessages(MessageTypes::FormNames,formNames)
   MessageTypes.setMessages(MessageTypes::Kinds,pokedexKinds)
   MessageTypes.setMessages(MessageTypes::Entries,pokedexEntries)
+end
+
+
+def compilePokemonSection
+
+
 end
 
 #===============================================================================

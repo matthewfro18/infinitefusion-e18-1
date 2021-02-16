@@ -325,7 +325,7 @@ class PokemonPokedex_Scene
     for i in 1...regionalSpecies.length
       nationalSpecies = regionalSpecies[i]
       if pbCanAddForModeList?($PokemonGlobal.pokedexMode,nationalSpecies)
-        form = $Trainer.formlastseen[nationalSpecies][1] || 0
+        form = 0#$Trainer.formlastseen[nationalSpecies][1] || 0
         fspecies = pbGetFSpeciesFromForm(nationalSpecies,form)
         color  = speciesData[fspecies][SpeciesColor] || 0
         type1  = speciesData[fspecies][SpeciesType1] || 0

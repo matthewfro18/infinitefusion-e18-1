@@ -770,7 +770,6 @@ def Kernel.pbItemBall(item, quantity = 1, plural = nil, canRandom = true)
   if item.is_a?(String) || item.is_a?(Symbol)
     item = getID(PBItems, item)
   end
-
   item = pbGetRandomItem(item) if canRandom #fait rien si pas activé
 
 

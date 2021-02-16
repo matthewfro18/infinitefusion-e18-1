@@ -12,6 +12,8 @@
 			- Registering multiple items at once
 			- Full screen support
 			- New options in menu
+			- Exp. gain when catching Pokémon
+			- New debug options
 			- Support for all other Essentials 18 and Essentials 17 features
 			
 

@@ -96,6 +96,18 @@ module PBEvolution
     return nil if !method_hash || !method_hash[function]
     return method_hash[function].call(*args)
   end
+
+
+  EVOPARAM = [0, # Unknown (do not use)
+              0, 0, 0, 1, 0, # Happiness, HappinessDay, HappinessNight, Level, Trade
+              2, 2, 1, 1, 1, # TradeItem, Item, AttackGreater, AtkDefEqual, DefenseGreater
+              1, 1, 1, 1, 1, # Silcoon, Cascoon, Ninjask, Shedinja, Beauty
+              2, 2, 2, 2, 3, # ItemMale, ItemFemale, DayHoldItem, NightHoldItem, HasMove
+              4, 1, 1, 1, 4, # HasInParty, LevelMale, LevelFemale, Location, TradeSpecies
+              1, 1, 1, 1, 5, # LevelDay, LevelNight, LevelDarkInParty, LevelRain, HappinessMoveType
+              1, 1, 1, 1, 1 # Custom 1-5
+  ]
+
 end
 
 #===============================================================================
