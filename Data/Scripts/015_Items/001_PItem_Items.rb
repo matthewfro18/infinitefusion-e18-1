@@ -618,45 +618,56 @@ end
 #===============================================================================
 # Teach and forget a move
 #===============================================================================
-def pbLearnMove(pkmn,move,ignoreifknown=false,bymachine=false,&block)
-  return false if !pkmn
-  movename = PBMoves.getName(move)
-  if pkmn.egg? && !$DEBUG
-    pbMessage(_INTL("Eggs can't be taught any moves."),&block)
+def pbLearnMove(pokemon,move,ignoreifknown=false,bymachine=false,quick=false)
+  return false if !pokemon
+  movename=PBMoves.getName(move)
+  if pokemon.isEgg? && !$DEBUG
+    Kernel.pbMessage(_INTL("{1} can't be taught to an Egg.",movename))
     return false
   end
-  if pkmn.shadowPokemon?
-    pbMessage(_INTL("Shadow Pokémon can't be taught any moves."),&block)
+  if pokemon.respond_to?("isShadow?") && pokemon.isShadow?
+    Kernel.pbMessage(_INTL("{1} can't be taught to this Pokémon.",movename))
     return false
   end
-  pkmnname = pkmn.name
-  if pkmn.hasMove?(move)
-    pbMessage(_INTL("{1} already knows {2}.",pkmnname,movename),&block) if !ignoreifknown
-    return false
-  end
-  if pkmn.numMoves<4
-    pkmn.pbLearnMove(move)
-    pbMessage(_INTL("\\se[]{1} learned {2}!\\se[Pkmn move learnt]",pkmnname,movename),&block)
-    return true
+  pkmnname=pokemon.name
+  for i in 0...4
+    if pokemon.moves[i].id==move
+      Kernel.pbMessage(_INTL("{1} already knows\r\n{2}.",pkmnname,movename)) if !ignoreifknown
+      return false
+    end
+    if pokemon.moves[i].id==0
+      pokemon.moves[i]=PBMove.new(move)
+      Kernel.pbMessage(_INTL("{1} learned {2}!\\se[itemlevel]",pkmnname,movename))
+      return true
+    end
   end
   loop do
-    pbMessage(_INTL("{1} wants to learn {2}, but it already knows four moves.\1",pkmnname,movename),&block) if !bymachine
-    pbMessage(_INTL("Please choose a move that will be replaced with {1}.",movename),&block)
-    forgetmove = pbForgetMove(pkmn,move)
-    if forgetmove>=0
-      oldmovename = PBMoves.getName(pkmn.moves[forgetmove].id)
-      oldmovepp   = pkmn.moves[forgetmove].pp
-      pkmn.moves[forgetmove] = PBMove.new(move)   # Replaces current/total PP
-      if bymachine && !NEWEST_BATTLE_MECHANICS
-        pkmn.moves[forgetmove].pp = [oldmovepp,pkmn.moves[forgetmove].totalpp].min
+    Kernel.pbMessage(_INTL("{1} is trying to\r\nlearn {2}.\1",pkmnname,movename))
+    Kernel.pbMessage(_INTL("But {1} can't learn more than four moves.\1",pkmnname)) if !quick
+    if Kernel.pbConfirmMessage(_INTL("Delete a move to make\r\nroom for {1}?",movename))
+      Kernel.pbMessage(_INTL("Which move should be forgotten?"))
+      forgetmove=pbForgetMove(pokemon,move)
+      if forgetmove>=0
+        oldmovename=PBMoves.getName(pokemon.moves[forgetmove].id)
+        oldmovepp=pokemon.moves[forgetmove].pp
+        pokemon.moves[forgetmove]=PBMove.new(move) # Replaces current/total PP
+        pokemon.moves[forgetmove].pp=[oldmovepp,pokemon.moves[forgetmove].totalpp].min if bymachine
+        if quick
+          Kernel.pbMessage(_INTL("\\se[]{1} learned {2}!\\se[itemlevel]",pkmnname,movename))
+        else
+          Kernel.pbMessage(_INTL("\\se[]1,\\wt[4] 2,\\wt[4] and...\\wt[8] ...\\wt[8] ...\\wt[8] Poof!\\se[balldrop]\1"))
+          Kernel.pbMessage(_INTL("{1} forgot how to\r\nuse {2}.\1",pkmnname,oldmovename))
+          Kernel.pbMessage(_INTL("And...\1"))
+          Kernel.pbMessage(_INTL("\\se[]{1} learned {2}!\\se[itemlevel]",pkmnname,movename))
+        end
+
+        return true
+      elsif Kernel.pbConfirmMessage(_INTL("Should {1} stop learning {2}?",pkmnname,movename))
+        Kernel.pbMessage(_INTL("{1} did not learn {2}.",pkmnname,movename))
+        return false
       end
-      pbMessage(_INTL("1,\\wt[16] 2, and\\wt[16]...\\wt[16] ...\\wt[16] ... Ta-da!\\se[Battle ball drop]\1"),&block)
-      pbMessage(_INTL("{1} forgot how to use {2}.\\nAnd...\1",pkmnname,oldmovename),&block)
-      pbMessage(_INTL("\\se[]{1} learned {2}!\\se[Pkmn move learnt]",pkmnname,movename),&block)
-      pkmn.changeHappiness("machine") if bymachine
-      return true
-    elsif pbConfirmMessage(_INTL("Give up on learning {1}?",movename),&block)
-      pbMessage(_INTL("{1} did not learn {2}.",pkmnname,movename),&block)
+    elsif Kernel.pbConfirmMessage(_INTL("Should {1} stop learning {2}?",pkmnname,movename))
+      Kernel.pbMessage(_INTL("{1} did not learn {2}.",pkmnname,movename))
       return false
     end
   end
