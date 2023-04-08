@@ -9,6 +9,7 @@ class PokeBattle_Battler
   attr_accessor :type1
   attr_accessor :type2
   attr_accessor :ability_id
+  attr_accessor :ability2_id
   attr_accessor :item_id
   attr_accessor :moves
   attr_accessor :gender
@@ -64,6 +65,10 @@ class PokeBattle_Battler
     return GameData::Ability.try_get(@ability_id)
   end
 
+  def ability2
+    return GameData::Ability.try_get(@ability2_id)
+  end
+
   def hasHiddenAbility?
     return @pokemon.ability_index >= 2
   end
@@ -72,6 +77,11 @@ class PokeBattle_Battler
   def ability=(value)
     new_ability = GameData::Ability.try_get(value)
     @ability_id = (new_ability) ? new_ability.id : nil
+  end
+
+  def ability2=(value)
+    new_ability = GameData::Ability.try_get(value)
+    @ability2_id = (new_ability) ? new_ability.id : nil
   end
 
   def item
@@ -209,6 +219,11 @@ class PokeBattle_Battler
     return (abil) ? abil.name : ""
   end
 
+  def ability2Name
+    abil = self.ability2
+    return (abil) ? abil.name : ""
+  end
+
   def itemName
     itm = self.item
     return (itm) ? itm.name : ""
@@ -254,6 +269,9 @@ class PokeBattle_Battler
     # Ability effects that alter calculated Speed
     if abilityActive?
       speedMult = BattleHandlers.triggerSpeedCalcAbility(self.ability,self,speedMult)
+      if $game_switches[SWITCH_DOUBLE_ABILITIES]
+        speedMult = BattleHandlers.triggerSpeedCalcAbility(self.ability2,self,speedMult)
+      end
     end
     # Item effects that alter calculated Speed
     if itemActive?
@@ -281,6 +299,9 @@ class PokeBattle_Battler
     ret = 1 if ret<1
     if abilityActive? && !@battle.moldBreaker
       ret = BattleHandlers.triggerWeightCalcAbility(self.ability,self,ret)
+      if $game_switches[SWITCH_DOUBLE_ABILITIES]
+        ret = BattleHandlers.triggerWeightCalcAbility(self.ability2,self,ret)
+      end
     end
     if itemActive?
       ret = BattleHandlers.triggerWeightCalcItem(self.item,self,ret)
@@ -363,7 +384,17 @@ class PokeBattle_Battler
     return true
   end
 
+  def hasActiveAbilityDouble?(check_ability, ignore_fainted = false)
+    return false if !abilityActive?(ignore_fainted)
+    if check_ability.is_a?(Array)
+      return check_ability.include?(@ability_id) || check_ability.include?(@ability2_id)
+    end
+    return self.ability == check_ability || self.ability2 == check_ability
+  end
+
+
   def hasActiveAbility?(check_ability, ignore_fainted = false)
+    return hasActiveAbilityDouble? if $game_switches[SWITCH_DOUBLE_ABILITIES]
     return false if !abilityActive?(ignore_fainted)
     return check_ability.include?(@ability_id) if check_ability.is_a?(Array)
     return self.ability == check_ability

@@ -90,12 +90,14 @@ class FusionSelectOptionsScene < PokemonOption_Scene
                                 }, "Select the Pokémon's nickname")
     end
 
-    options << EnumOption.new(_INTL("Ability"), [_INTL(getAbilityName(@abilityList[0])), _INTL(getAbilityName(@abilityList[1]))],
-                     proc { 0 },
-                     proc { |value|
-                       @selectedAbility=@abilityList[value]
-                     }, [getAbilityDescription(@abilityList[0]), getAbilityDescription(@abilityList[1])]
+    if @abilityList != nil
+      options << EnumOption.new(_INTL("Ability"), [_INTL(getAbilityName(@abilityList[0])), _INTL(getAbilityName(@abilityList[1]))],
+                                proc { 0 },
+                                proc { |value|
+                                  @selectedAbility=@abilityList[value]
+                                }, [getAbilityDescription(@abilityList[0]), getAbilityDescription(@abilityList[1])]
       )
+    end
 
     options << EnumOption.new(_INTL("Nature"), [_INTL(getNatureName(@natureList[0])), _INTL(getNatureName(@natureList[1]))],
                      proc { 0 },

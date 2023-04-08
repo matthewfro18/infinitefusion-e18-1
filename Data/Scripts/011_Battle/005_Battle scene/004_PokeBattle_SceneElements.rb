@@ -467,6 +467,13 @@ class AbilitySplashBar < SpriteWrapper
     textPos.push([@battler.abilityName,textX,26,@side==1,
        TEXT_BASE_COLOR,TEXT_SHADOW_COLOR,true])
     pbDrawTextPositions(self.bitmap,textPos)
+
+    #2nd ability
+    if $game_switches[SWITCH_DOUBLE_ABILITIES]
+      textPos.push([@battler.ability2Name,textX,26,@side==1,
+                    TEXT_BASE_COLOR,TEXT_SHADOW_COLOR,true])
+      pbDrawTextPositions(self.bitmap,textPos)
+    end
   end
 
   def update

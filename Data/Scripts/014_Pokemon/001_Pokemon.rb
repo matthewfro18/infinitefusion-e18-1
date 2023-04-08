@@ -42,6 +42,8 @@ class Pokemon
   # defined at this index. Is recalculated (as 0 or 1) if made nil.
   # @param value [Integer, nil] forced ability index (nil if none is set)
   attr_writer :ability_index
+  attr_writer :ability2_index
+
   # @return [Array<Pokemon::Move>] the moves known by this Pokémon
   attr_accessor :moves
   # @return [Array<Integer>] the IDs of moves known by this Pokémon when it was obtained
@@ -511,9 +513,18 @@ class Pokemon
     return @ability_index
   end
 
+  def ability2_index
+    @ability2_index = (@personalID & 1) if !@ability2_index
+    return @ability2_index
+  end
+
   # @return [GameData::Ability, nil] an Ability object corresponding to this Pokémon's ability
   def ability
     return GameData::Ability.try_get(ability_id)
+  end
+
+  def ability2
+    return GameData::Ability.try_get(ability2_id)
   end
 
   # @return [Symbol, nil] the ability symbol of this Pokémon's ability
@@ -535,6 +546,11 @@ class Pokemon
   def ability=(value)
     return if value && !GameData::Ability.exists?(value)
     @ability = (value) ? GameData::Ability.get(value).id : value
+  end
+
+  def ability2=(value)
+    return if value && !GameData::Ability.exists?(value)
+    @ability2 = (value) ? GameData::Ability.get(value).id : value
   end
 
   # Returns whether this Pokémon has a particular ability. If no value
@@ -1163,7 +1179,7 @@ class Pokemon
     end
     hpDiff = @totalhp - @hp
     #@totalhp = stats[:HP]
-    @totalhp = self.ability == :WONDERGUARD ? 1 : stats[:HP]
+    @totalhp = self.ability == :WONDERGUARD ? 1 : stats[:HP] || ($game_switches[SWITCH_DOUBLE_ABILITIES] && self.ability2 == :WONDERGUARD)
     calculated_hp = @totalhp - hpDiff
     @hp = calculated_hp > 0 ? calculated_hp : 0
     @attack = stats[:ATTACK]
@@ -1215,7 +1231,9 @@ class Pokemon
     @gender = nil
     @shiny = nil
     @ability_index = nil
+    @ability2_index = nil
     @ability = nil
+    @ability2 = nil
     @nature = nil
     @nature_for_stats = nil
     @item = nil

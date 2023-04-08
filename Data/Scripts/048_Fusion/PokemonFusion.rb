@@ -774,15 +774,28 @@ end
 def setAbilityAndNatureAndNickname(abilitiesList, naturesList)
   clearUIForMoves
 
-  scene = FusionSelectOptionsScene.new(abilitiesList, naturesList, @pokemon1, @pokemon2)
-  screen = PokemonOptionScreen.new(scene)
-  screen.pbStartScreen
+  if $game_switches[SWITCH_DOUBLE_ABILITIES]
+    scene = FusionSelectOptionsScene.new(nil, naturesList, @pokemon1, @pokemon2)
+    screen = PokemonOptionScreen.new(scene)
+    screen.pbStartScreen
+    @pokemon1.ability = abilitiesList[0]
+    @pokemon1.ability2 = abilitiesList[1]
+  else
+    scene = FusionSelectOptionsScene.new(abilitiesList, naturesList, @pokemon1, @pokemon2)
+    screen = PokemonOptionScreen.new(scene)
+    screen.pbStartScreen
+    @pokemon1.ability = scene.selectedAbility
 
-  @pokemon1.ability = scene.selectedAbility
+  end
+
+
   @pokemon1.nature = scene.selectedNature
   if scene.hasNickname
     @pokemon1.name = scene.nickname
   end
+
+  p @pokemon1.ability.real_name
+  p @pokemon1.ability2.real_name
 
 end
 

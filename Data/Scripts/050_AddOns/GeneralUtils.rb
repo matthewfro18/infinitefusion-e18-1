@@ -412,6 +412,17 @@ def customSpriteExistsBase(body,head)
   return download_custom_sprite(head, body) != nil
 end
 
+def getSpriteCredits(spriteName)
+  csv_date = []
+  File.foreach(Settings::CREDITS_FILE_PATH) do |line|
+    row = line.split(';')
+    if row[0].include?(spriteName)
+      return row[1]
+    end
+  end
+  return nil
+end
+
 
 def getArceusPlateType(heldItem)
   return :NORMAL if heldItem == nil
