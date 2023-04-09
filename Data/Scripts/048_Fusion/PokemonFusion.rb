@@ -689,6 +689,11 @@ class PokemonFusionScene
       oldspeciesname = GameData::Species.get(@pokemon1.species).real_name
 
       overlay = BitmapSprite.new(Graphics.width, Graphics.height, @viewport).bitmap
+
+      frames.times do
+        Graphics.update
+      end
+
       drawSpriteCredits(@sprites["rsprite2"].getBitmap.filename, overlay)
       Kernel.pbMessageDisplay(@sprites["msgwindow"],
                               _INTL("\\se[]Congratulations! Your Pokémon were fused into {2}!\\wt[80]", @pokemon1.name, newspeciesname))
@@ -712,6 +717,7 @@ class PokemonFusionScene
       if !$Trainer.pokedex.owned?(newSpecies)
         $Trainer.pokedex.set_seen(newSpecies)
         $Trainer.pokedex.set_owned(newSpecies)
+
         Kernel.pbMessageDisplay(@sprites["msgwindow"],
                                 _INTL("{1}'s data was added to the Pokédex", newspeciesname))
         @scene.pbShowPokedex(@newspecies)
