@@ -46,7 +46,8 @@ class PokemonPokedexInfo_Scene
     @sprites["bgSelected_next"].setBitmap(_INTL("Graphics/Pictures/Pokedex/bg_forms_selected_small"))
     @sprites["bgSelected_next"].visible = false
 
-    @creditsOverlay = BitmapSprite.new(Graphics.width, Graphics.height, @viewport).bitmap
+    print "initialize"
+    @sprites['creditsOverlay'] = BitmapSprite.new(Graphics.width, Graphics.height, @viewport).bitmap
 
   end
 
@@ -136,7 +137,7 @@ class PokemonPokedexInfo_Scene
   end
 
   def showSpriteCredits(filename)
-    @creditsOverlay.dispose
+    @sprites['creditsOverlay'].dispose if @sprites['creditsOverlay']
 
     x= Graphics.width/2 -60
     y=Graphics.height - 60
@@ -148,9 +149,13 @@ class PokemonPokedexInfo_Scene
 
     label_base_color = Color.new(248, 248, 248)
     label_shadow_color = Color.new(104, 104, 104)
-    @creditsOverlay = BitmapSprite.new(Graphics.width, Graphics.height, @viewport).bitmap
+
+    print "showSpriteCredits"
+    @sprites['creditsOverlay'] = BitmapSprite.new(Graphics.width, Graphics.height, @viewport).bitmap
     textpos = [[author_name, x, y, 0, label_base_color, label_shadow_color]]
-    pbDrawTextPositions(@creditsOverlay, textpos)
+
+    print "drawTextPosition"
+    pbDrawTextPositions(@sprites['creditsOverlay'], textpos)
   end
 
 

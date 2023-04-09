@@ -208,6 +208,8 @@ class PokemonPokedexInfo_Scene
 
   def drawPage(page)
     overlay = @sprites["overlay"].bitmap
+    @sprites['creditsOverlay'].dispose if @sprites['creditsOverlay']
+
     overlay.clear
     # Make certain sprites visible
     @sprites["infosprite"].visible    = (@page==1)
