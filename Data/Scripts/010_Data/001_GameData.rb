@@ -30,11 +30,6 @@ module GameData
 #        p "Please switch to symbols, thanks."
 #      end
       raise "Unknown ID #{other}." unless self::DATA.has_key?(other)
-
-      if other == :Species
-
-      end
-
       return self::DATA[other]
     end
 

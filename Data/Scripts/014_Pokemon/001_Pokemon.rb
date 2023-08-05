@@ -1110,7 +1110,6 @@ class Pokemon
     this_base_stats = species_data.base_stats
     ret = {}
     GameData::Stat.each_main { |s| ret[s.id] = this_base_stats[s.id] }
-    p ret
     return ret
   end
 
