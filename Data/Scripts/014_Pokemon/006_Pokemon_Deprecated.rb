@@ -27,7 +27,7 @@ class PokeBattle_Pokemon
     return pkmn if pkmn.is_a?(Pokemon)
     owner = Pokemon::Owner.new(pkmn.trainerID, pkmn.ot, pkmn.otgender, pkmn.language)
     # Set level to 1 initially, as it will be recalculated later
-    ret = Pokemon.create(pkmn.species, 1, owner, false, false)
+    ret = Pokemon.new(pkmn.species, 1, owner, false, false)
     ret.forced_form      = pkmn.forcedForm if pkmn.forcedForm
     ret.time_form_set    = pkmn.formTime
     ret.exp              = pkmn.exp
@@ -201,7 +201,7 @@ end
 #   slated to be removed in v20.
 def pbNewPkmn(species, level, owner = $Trainer, withMoves = true)
   Deprecation.warn_method('pbNewPkmn', 'v20', 'Pokemon.new')
-  return Pokemon.create(species, level, owner, withMoves)
+  return Pokemon.new(species, level, owner, withMoves)
 end
 alias pbGenPkmn pbNewPkmn
 alias pbGenPoke pbNewPkmn

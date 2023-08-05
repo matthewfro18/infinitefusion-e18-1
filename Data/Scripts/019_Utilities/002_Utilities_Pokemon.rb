@@ -69,7 +69,7 @@ def pbAddPokemon(pkmn, level = 1, see_form = true, dontRandomize=false)
     pbMessage(_INTL("The Pokémon Boxes are full and can't accept any more!"))
     return false
   end
-  pkmn = Pokemon.create(pkmn, level) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   tryRandomizeGiftPokemon(pkmn,dontRandomize)
   species_name = pkmn.speciesName
   pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $Trainer.name, species_name))
@@ -80,7 +80,7 @@ end
 
 def pbAddPokemonSilent(pkmn, level = 1, see_form = true)
   return false if !pkmn || pbBoxesFull?
-  pkmn = Pokemon.create(pkmn, level) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   $Trainer.pokedex.register(pkmn) if see_form
   $Trainer.pokedex.set_owned(pkmn.species)
   pkmn.record_first_moves
@@ -97,7 +97,7 @@ end
 #===============================================================================
 def pbAddToParty(pkmn, level = 1, see_form = true, dontRandomize=false)
   return false if !pkmn || $Trainer.party_full?
-  pkmn = Pokemon.create(pkmn, level) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   tryRandomizeGiftPokemon(pkmn,dontRandomize)
   species_name = pkmn.speciesName
   pbMessage(_INTL("{1} obtained {2}!\\me[Pkmn get]\\wtnp[80]\1", $Trainer.name, species_name))
@@ -108,7 +108,7 @@ end
 
 def pbAddToPartySilent(pkmn, level = nil, see_form = true)
   return false if !pkmn || $Trainer.party_full?
-  pkmn = Pokemon.create(pkmn, level) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   $Trainer.pokedex.register(pkmn) if see_form
   $Trainer.pokedex.set_owned(pkmn.species)
   pkmn.record_first_moves
@@ -118,7 +118,7 @@ end
 
 def pbAddForeignPokemon(pkmn, level = 1, owner_name = nil, nickname = nil, owner_gender = 0, see_form = true)
   return false if !pkmn
-  pkmn = Pokemon.create(pkmn, level) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, level) if !pkmn.is_a?(Pokemon)
   # Set original trainer to a foreign one
   pkmn.owner = Pokemon::Owner.new_foreign(owner_name || "", owner_gender)
   # Set nickname
@@ -138,7 +138,7 @@ end
 
 def pbGenerateEgg(pkmn, text = "")
   return false if !pkmn #|| $Trainer.party_full?
-  pkmn = Pokemon.create(pkmn, Settings::EGG_LEVEL) if !pkmn.is_a?(Pokemon)
+  pkmn = Pokemon.new(pkmn, Settings::EGG_LEVEL) if !pkmn.is_a?(Pokemon)
   # Set egg's details
   pkmn.name           = _INTL("Egg")
   pkmn.steps_to_hatch = pkmn.species_data.hatch_steps

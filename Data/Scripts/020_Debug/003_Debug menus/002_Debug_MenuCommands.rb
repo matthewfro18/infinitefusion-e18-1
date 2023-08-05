@@ -546,7 +546,7 @@ DebugMenuCommands.register("demoparty", {
     $Trainer.party.clear
     # Generate Pokémon of each species at level 20
     party.each do |species|
-      pkmn = Pokemon.create(species, 20)
+      pkmn = Pokemon.new(species, 20)
       $Trainer.party.push(pkmn)
       $Trainer.pokedex.register(pkmn)
       $Trainer.pokedex.set_owned(species)

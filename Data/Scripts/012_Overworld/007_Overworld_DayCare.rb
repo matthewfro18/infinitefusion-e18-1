@@ -186,7 +186,7 @@ def pbDayCareGenerateEgg
     end
   end
   # Generate egg
-  egg = Pokemon.create(babyspecies, Settings::EGG_LEVEL)
+  egg = Pokemon.new(babyspecies, Settings::EGG_LEVEL)
   # Randomise personal ID
   pid = rand(65536)
   pid |= (rand(65536)<<16)

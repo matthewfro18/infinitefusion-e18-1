@@ -235,7 +235,7 @@ class PBPokemon
   end
 
   def createPokemon(level, iv, trainer)
-    pkmn = Pokemon.create(@species, level, trainer, false)
+    pkmn = Pokemon.new(@species, level, trainer, false)
     pkmn.item = @item
     pkmn.personalID = rand(2**16) | rand(2**16) << 16
     pkmn.nature = nature

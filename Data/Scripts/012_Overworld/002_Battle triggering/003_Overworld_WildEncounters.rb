@@ -394,7 +394,7 @@ end
 # Applies wild Pokémon modifiers (wild held item, shiny chance modifiers,
 # Pokérus, gender/nature forcing because of player's lead Pokémon).
 def pbGenerateWildPokemon(species,level,isRoamer=false)
-  genwildpoke = Pokemon.create(species,level)
+  genwildpoke = Pokemon.new(species,level)
   # Give the wild Pokémon a held item
   items = genwildpoke.wildHoldItems
   first_pkmn = $Trainer.first_pokemon

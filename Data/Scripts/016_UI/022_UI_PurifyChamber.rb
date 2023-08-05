@@ -295,13 +295,13 @@ class PurifyChamber
   end
 
   def debugAddShadow(set,species)
-    pkmn=Pokemon.create(species,1)
+    pkmn=Pokemon.new(species,1)
     pkmn.makeShadow
     setShadow(set,pkmn)
   end
 
   def debugAddNormal(set,species)
-    pkmn=Pokemon.create(species,1)
+    pkmn=Pokemon.new(species,1)
     insertAfter(set,setCount(set),pkmn)
   end
 

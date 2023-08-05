@@ -300,7 +300,7 @@ module GameData
           species = evolveRematchPokemon(nbRematch, species)
         end
 
-        pkmn = Pokemon.create(species, level, trainer, false)
+        pkmn = Pokemon.new(species, level, trainer, false)
 
         trainer.party.push(pkmn)
         # Set Pokémon's properties if defined
