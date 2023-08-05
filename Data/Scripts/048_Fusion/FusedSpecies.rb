@@ -1,0 +1,3 @@
+class FusedSpecies < Species
+
+end

@@ -71,24 +71,24 @@ module GameData
       return offset
     end
 
-    def self.front_sprite_bitmap(dex_number, a = 0, b = 0, isShiny = false, bodyShiny = false, headShiny = false)
+    def self.front_sprite_bitmap(body_number, head_number = nil, b = 0, isShiny = false, bodyShiny = false, headShiny = false)
       #la méthode est utilisé ailleurs avec d'autres arguments (gender, form, etc.) mais on les veut pas
-      if dex_number.is_a?(Symbol)
-        dex_number = GameData::Species.get(dex_number).id_number
+      if body_number.is_a?(Symbol)
+        body_number = GameData::Species.get(body_number).id_number
       end
-      filename = self.sprite_filename(dex_number)
+      filename = self.sprite_filename(body_number)
       sprite = (filename) ? AnimatedBitmap.new(filename) : nil
       if isShiny
-      sprite.shiftColors(self.calculateShinyHueOffset(dex_number, bodyShiny, headShiny))
+      sprite.shiftColors(self.calculateShinyHueOffset(body_number, bodyShiny, headShiny))
       end
       return sprite
     end
 
-    def self.back_sprite_bitmap(dex_number, b = 0, form = 0, isShiny = false, bodyShiny = false, headShiny = false)
-      filename = self.sprite_filename(dex_number)
+    def self.back_sprite_bitmap(body_number, head_number = nil, form = 0, isShiny = false, bodyShiny = false, headShiny = false)
+      filename = self.sprite_filename(body_number)
       sprite = (filename) ? AnimatedBitmap.new(filename) : nil
       if isShiny
-        sprite.shiftColors(self.calculateShinyHueOffset(dex_number, bodyShiny, headShiny))
+        sprite.shiftColors(self.calculateShinyHueOffset(body_number, bodyShiny, headShiny))
       end
       return sprite
     end
