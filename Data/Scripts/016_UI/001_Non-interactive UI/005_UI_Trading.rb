@@ -230,7 +230,7 @@ def pbStartTrade(pokemonIndex,newpoke,nickname,trainerName,trainerGender=0,saveg
   else
     species_data = GameData::Species.try_get(newpoke)
     raise _INTL("Species does not exist ({1}).", newpoke) if !species_data
-    yourPokemon = Pokemon.new(species_data.id, myPokemon.level, opponent)
+    yourPokemon = Pokemon.create(species_data.id, myPokemon.level, opponent)
   end
   yourPokemon.name          = nickname
   yourPokemon.obtain_method = 2   # traded

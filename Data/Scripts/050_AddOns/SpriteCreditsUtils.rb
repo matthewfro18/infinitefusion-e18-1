@@ -141,7 +141,7 @@ def generateCurrentGalleryBattle(level = nil, number_of_pokemon = 3)
   selected_battlers_idx = possible_battlers.sample(number_of_pokemon)
   party = []
   selected_battlers_idx.each { |species|00
-    party << Pokemon.new(species, level)
+    party << Pokemon.create(species, level)
   }
   customTrainerBattle(spriter_name,
                       :PAINTER,

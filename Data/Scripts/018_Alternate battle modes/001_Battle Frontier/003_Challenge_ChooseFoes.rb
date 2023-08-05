@@ -166,7 +166,7 @@ end
 
 
 def createPokemon(species, level, iv, trainer)
-  pkmn = Pokemon.new(species, level, trainer)
+  pkmn = Pokemon.create(species, level, trainer)
   pkmn.personalID = rand(2 ** 16) | rand(2 ** 16) << 16
   GameData::Stat.each_main { |s| pkmn.iv[s.id] = iv }
   pkmn.calc_stats

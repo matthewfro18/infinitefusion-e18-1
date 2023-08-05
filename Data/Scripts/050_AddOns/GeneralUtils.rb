@@ -9,7 +9,7 @@ def pbAddPokemonID(pokemon, level = nil, seeform = true, dontRandomize = false)
   end
 
   if pokemon.is_a?(Integer) && level.is_a?(Integer)
-    pokemon = Pokemon.new(pokemon, level, $Trainer)
+    pokemon = Pokemon.create(pokemon, level, $Trainer)
   end
   #random species if randomized gift pokemon &  wild poke
   if $game_switches[SWITCH_RANDOM_GIFT_POKEMON] && $game_switches[SWITCH_RANDOM_WILD] && !dontRandomize
@@ -32,7 +32,7 @@ def pbAddPokemonID(pokemon_id, level = 1, see_form = true, skip_randomize = fals
     return false
   end
   if pokemon_id.is_a?(Integer) && level.is_a?(Integer)
-    pokemon = Pokemon.new(pokemon_id, level)
+    pokemon = Pokemon.create(pokemon_id, level)
     species_name = pokemon.speciesName
   end
 
@@ -343,7 +343,7 @@ end
 def generateSimpleTrainerParty(teamSpecies, level)
   team = []
   for species in teamSpecies
-    poke = Pokemon.new(species, level)
+    poke = Pokemon.create(species, level)
     team << poke
   end
   return team

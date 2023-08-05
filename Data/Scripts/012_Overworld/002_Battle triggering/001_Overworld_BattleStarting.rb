@@ -549,7 +549,7 @@ def customTrainerBattle(trainerName, trainerType, party_array, default_level=50,
     if pokemon.is_a?(Pokemon)
       party << pokemon
     elsif pokemon.is_a?(Symbol)
-      party << Pokemon.new(pokemon,default_level,trainer)
+      party << Pokemon.create(pokemon,default_level,trainer)
     end
   }
   trainer.party=party

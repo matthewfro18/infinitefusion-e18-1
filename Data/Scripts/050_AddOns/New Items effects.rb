@@ -1471,14 +1471,14 @@ def pbUnfuse(pokemon, scene, supersplicers, pcPosition = nil)
         new_level = calculateUnfuseLevelOldMethod(pokemon, supersplicers)
         body_level = new_level
         head_level = new_level
-        poke1 = Pokemon.new(bodyPoke, body_level)
-        poke2 = Pokemon.new(headPoke, head_level)
+        poke1 = Pokemon.create(bodyPoke, body_level)
+        poke2 = Pokemon.create(headPoke, head_level)
       else
         exp_body = pokemon.exp_when_fused_body + pokemon.exp_gained_since_fused
         exp_head = pokemon.exp_when_fused_head + pokemon.exp_gained_since_fused
 
-        poke1 = Pokemon.new(bodyPoke, pokemon.level)
-        poke2 = Pokemon.new(headPoke, pokemon.level)
+        poke1 = Pokemon.create(bodyPoke, pokemon.level)
+        poke2 = Pokemon.create(headPoke, pokemon.level)
         poke1.exp = exp_body
         poke2.exp = exp_head
       end
@@ -1540,8 +1540,8 @@ def pbUnfuse(pokemon, scene, supersplicers, pcPosition = nil)
           $PokemonStorage.pbStoreCaught(poke2)
           scene.pbDisplay(_INTL("{1} was sent to the PC.", poke2.name))
         else
-          poke2 = Pokemon.new(bodyPoke, body_level)
-          poke1 = Pokemon.new(headPoke, head_level)
+          poke2 = Pokemon.create(bodyPoke, body_level)
+          poke1 = Pokemon.create(headPoke, head_level)
 
           if pcPosition != nil
             box = pcPosition[0]

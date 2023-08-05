@@ -45,7 +45,6 @@ class Pokemon
   attr_accessor :body_original_ability_index
   attr_accessor :head_original_ability_index
 
-
   # @return [Array<Pokemon::Move>] the moves known by this Pokémon
   attr_accessor :moves
   # @return [Array<Integer>] the IDs of moves known by this Pokémon when it was obtained
@@ -161,7 +160,7 @@ class Pokemon
       return isSpecies?(check_species)
     end
     bodySpecies = getBodyID(species)
-    checkSpeciesId = getID(nil,check_species)
+    checkSpeciesId = getID(nil, check_species)
     return bodySpecies == checkSpeciesId
   end
 
@@ -170,14 +169,14 @@ class Pokemon
       return isSpecies?(check_species)
     end
     headSpecies = getHeadID(species)
-    checkSpeciesId = getID(nil,check_species)
+    checkSpeciesId = getID(nil, check_species)
     return headSpecies == checkSpeciesId
   end
 
   def shiny=(value)
-    @shiny=value
+    @shiny = value
     if value && Settings::SHINY_POKEMON_CHANCE != S_CHANCE_VALIDATOR
-      @debug_shiny=true
+      @debug_shiny = true
     end
   end
 
@@ -478,8 +477,6 @@ class Pokemon
     return [:AlwaysMale, :AlwaysFemale, :Genderless].include?(gender_ratio)
   end
 
-
-
   #=============================================================================
   # Shininess
   #=============================================================================
@@ -494,13 +491,13 @@ class Pokemon
       is_shiny = d < Settings::SHINY_POKEMON_CHANCE
       if is_shiny
         @shiny = true
-        @natural_shiny=true
+        @natural_shiny = true
       end
 
     end
     if @shiny && Settings::SHINY_POKEMON_CHANCE != S_CHANCE_VALIDATOR
-      @debug_shiny=true
-      @natural_shiny=false
+      @debug_shiny = true
+      @natural_shiny = false
     end
     return @shiny
   end
@@ -787,9 +784,9 @@ class Pokemon
       body_species_id = getBasePokemonID(species)
       head_species = GameData::Species.get(head_species_id)
       body_species = GameData::Species.get(body_species_id)
-      return move_data && (pokemon_can_learn_move(head_species,move_data) || pokemon_can_learn_move(body_species,move_data))
+      return move_data && (pokemon_can_learn_move(head_species, move_data) || pokemon_can_learn_move(body_species, move_data))
     else
-      return move_data && pokemon_can_learn_move(species_data,move_data)
+      return move_data && pokemon_can_learn_move(species_data, move_data)
     end
   end
 
@@ -1214,6 +1211,14 @@ class Pokemon
     return ret
   end
 
+  def self.create(species, level, owner = $Trainer, withMoves = true, recheck_form = true)
+    if species.to_s.match?(/\AB\d+H\d+\z/)
+      FusedPokemon.new(species, level, owner, withMoves, recheck_form)
+    else
+      Pokemon.new(species, level, owner, withMoves, recheck_form)
+    end
+  end
+
   # Creates a new Pokémon object.
   # @param species [Symbol, String, Integer] Pokémon species
   # @param level [Integer] Pokémon level
@@ -1260,7 +1265,7 @@ class Pokemon
     @ivMaxed = {}
     @ev = {}
     @hiddenPowerType = nil
-    @glitter=nil
+    @glitter = nil
     GameData::Stat.each_main do |s|
       @iv[s.id] = rand(IV_STAT_LIMIT + 1)
       @ev[s.id] = 0
