@@ -5,8 +5,8 @@ module GameData
     def initialize(id)
       if id.is_a?(Integer)
         body_id = getBodyID(id)
-        head_id = getHeadID(id,body_id)
-        pokemon_id = getFusedPokemonIdFromDexNum(body_id,head_id)
+        head_id = getHeadID(id, body_id)
+        pokemon_id = getFusedPokemonIdFromDexNum(body_id, head_id)
         return GameData::FusedSpecies.new(pokemon_id)
       end
       head_id = get_head_id_from_symbol(id)
@@ -41,13 +41,13 @@ module GameData
 
       #Moves
       @moves = calculate_moveset()
-      @tutor_moves =calculate_tutor_moves() # hash[:tutor_moves] || []
+      @tutor_moves = calculate_tutor_moves() # hash[:tutor_moves] || []
       @egg_moves = calculate_egg_moves() # hash[:egg_moves] || []
 
       #todo : all below
 
-      @abilities = calculate_abilities(@body_pokemon,@head_pokemon) # hash[:abilities] || []
-      @hidden_abilities = calculate_hidden_abilities(@body_pokemon,@head_pokemon) # hash[:hidden_abilities] || []
+      @abilities = calculate_abilities(@body_pokemon, @head_pokemon) # hash[:abilities] || []
+      @hidden_abilities = calculate_hidden_abilities(@body_pokemon, @head_pokemon) # hash[:hidden_abilities] || []
       @wild_item_common = [] # hash[:wild_item_common]
       @wild_item_uncommon = [] # hash[:wild_item_uncommon]
       @wild_item_rare = [] #  hash[:wild_item_rare]
@@ -141,7 +141,7 @@ module GameData
       return combine_arrays(@body_pokemon.tutor_moves, @head_pokemon.tutor_moves)
     end
 
-    def calculate_abilities(pokemon1,pokemon2)
+    def calculate_abilities(pokemon1, pokemon2)
       abilities_hash = []
 
       ability1 = pokemon1.abilities[0]
@@ -154,22 +154,26 @@ module GameData
       return abilities_hash
     end
 
-    def calculate_hidden_abilities(pokemon1,pokemon2)
+    def calculate_hidden_abilities(pokemon1, pokemon2)
       #First two spots are the other abilities of the two pokemon
-      abilities_hash = calculate_abilities(pokemon2,pokemon1)
+      abilities_hash = calculate_abilities(pokemon2, pokemon1)
       #add the hidden ability for the two base pokemon
       abilities_hash << @body_pokemon.hidden_abilities[0]
       abilities_hash << @head_pokemon.hidden_abilities[0]
       return abilities_hash
     end
 
-
     #TODO
     # ################## UNFINISHED ####################
 
     #todo
     def calculate_name()
-      return @body_pokemon.name + "/" + @head_pokemon.name
+      prefix = GameData::SPLIT_NAMES[@body_pokemon.id_number][0]
+      suffix = GameData::SPLIT_NAMES[@head_pokemon.id_number][1]
+      if prefix[-1] == suffix[0]
+        prefix = prefix[0..-2]
+      end
+      return prefix + suffix
     end
 
     #todo
