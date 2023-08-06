@@ -80,12 +80,16 @@ class Player < Trainer
     end
 
     def set_seen_fusion(species)
+      initFusionDexArray() if @seen_fusion.length < NB_POKEMON+2
+
       bodyId = getBodyID(species)
       headId = getHeadID(species, bodyId)
       @seen_fusion[headId][bodyId] = true
     end
 
     def set_seen_normalDex(species)
+      initStandardDexArray() if @seen_standard.length < NB_POKEMON
+
       dex_num = getDexNumberForSpecies(species)
       @seen_standard[dex_num] = true
     end

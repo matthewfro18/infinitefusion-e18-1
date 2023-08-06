@@ -146,8 +146,24 @@ def getDexNumberForSpecies(species)
   return dexNum
 end
 
+def getFusedPokemonIdFromDexNum(body_dex, head_dex)
+  return ("B" + body_dex.to_s + "H" + head_dex.to_s).to_sym
+end
+
 def getPokemon(dexNum)
-  return GameData::Species.get(dexNum)
+  if dexNum.is_a?(Integer)
+    if dexNum > NB_POKEMON
+      body_id = getBodyID(dexNum)
+      head_id = getHeadID(dexNum,body_id)
+      pokemon_id = getFusedPokemonIdFromDexNum(body_id,head_id)
+    else
+      pokemon_id = dexNum
+    end
+  else
+    pokemon_id = dexNum
+  end
+
+  return GameData::Species.get(pokemon_id)
 end
 
 def getSpecies(dexnum)
@@ -238,19 +254,30 @@ def getRandomCustomFusion(returnRandomPokemonIfNoneFound = true, customPokeList 
   return randPoke
 end
 
+
+
+
 def getBodyID(species)
-  dexNum = getDexNumberForSpecies(species)
+  if species.is_a?(Integer)
+    dexNum = species
+  else
+    dexNum = getDexNumberForSpecies(species)
+  end
   if dexNum % NB_POKEMON == 0
     return (dexNum / NB_POKEMON) - 1
   end
   return (dexNum / NB_POKEMON).round
 end
-
 def getHeadID(species, bodyId = nil)
+  if species.is_a?(Integer)
+    fused_dexNum = species
+  else
+    fused_dexNum = getDexNumberForSpecies(species)
+  end
+
   if bodyId == nil
     bodyId = getBodyID(species)
   end
-  fused_dexNum = getDexNumberForSpecies(species)
   body_dexNum = getDexNumberForSpecies(bodyId)
 
   calculated_number = (fused_dexNum - (body_dexNum * NB_POKEMON)).round

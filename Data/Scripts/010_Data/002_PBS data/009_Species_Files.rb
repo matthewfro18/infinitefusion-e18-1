@@ -210,10 +210,10 @@ module GameData
         species_data = GameData::Species.get(getHeadID(species_data))
       end
 
-      if form > 0
-        ret = sprintf("Cries/%s_%d", species_data.species, form)
-        return ret if pbResolveAudioSE(ret)
-      end
+      # if form > 0
+      #   ret = sprintf("Cries/%s_%d", species_data.species, form)
+      #   return ret if pbResolveAudioSE(ret)
+      # end
       ret = sprintf("Cries/%s", species_data.species)
       return (pbResolveAudioSE(ret)) ? ret : nil
     end

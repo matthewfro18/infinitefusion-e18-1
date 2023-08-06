@@ -458,7 +458,7 @@ def getDexNumFromFilename(filename)
   head = splitPoke[0].to_i
   body = splitPoke[1].to_i
 
-  return nil if (body * NB_POKEMON) + head > (NB_POKEMON * NB_POKEMON) + 420
+  return nil if (body * NB_POKEMON) + head > (NB_POKEMON * NB_POKEMON) + NB_POKEMON
   return (body * NB_POKEMON) + head
 end
 

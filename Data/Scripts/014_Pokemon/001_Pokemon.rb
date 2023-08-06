@@ -126,7 +126,8 @@ class Pokemon
   end
 
   def species_data
-    return GameData::Species.get_species_form(@species, form_simple)
+    @species_data = GameData::Species.get(@species) if ! @species_data
+    return @species_data #GameData::Species.get(@species)
   end
 
   #=============================================================================
@@ -142,6 +143,7 @@ class Pokemon
     new_species_data = GameData::Species.get(species_id)
     return if @species == new_species_data.species
     @species = new_species_data.species
+    p @species.name
     @form = new_species_data.form if new_species_data.form != 0
     @forced_form = nil
     @level = nil # In case growth rate is different for the new species
@@ -1221,9 +1223,9 @@ class Pokemon
   # @param withMoves [TrueClass, FalseClass] whether the Pokémon should have moves
   # @param rechech_form [TrueClass, FalseClass] whether to auto-check the form
   def initialize(species, level, owner = $Trainer, withMoves = true, recheck_form = true)
-    species_data = GameData::Species.get(species)
-    @species = species_data.species
-    @form = species_data.form
+    @species_data = GameData::Species.get(species)
+    @species = @species_data.species
+    @form = @species_data.form
     @forced_form = nil
     @time_form_set = nil
     self.level = level
@@ -1253,7 +1255,7 @@ class Pokemon
     @sheen = 0
     @pokerus = 0
     @name = nil
-    @happiness = species_data.happiness
+    @happiness = @species_data.happiness
     @poke_ball = :POKEBALL
     @markings = 0
     @iv = {}
