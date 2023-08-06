@@ -221,10 +221,6 @@ class PokemonFusionScene
       abID2 = @pokemon2.ability
     else
       abID1 = hidden1 ? abilityList[-2][0] : abilityList[0][0]
-
-      p abilityList
-      p abilityList[5]
-      p abilityList[1]
       abID2 = hidden2 ? abilityList[-1][0] : abilityList[1][0]
     end
     availableNatures = []
