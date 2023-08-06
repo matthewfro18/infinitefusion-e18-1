@@ -38,18 +38,22 @@ class Player < Trainer
       self.refresh_accessible_dexes
     end
 
-    def initStandardDexArray()
+    def initStandardDexArray(resync=false)
       dex_array = []
       (0..NB_POKEMON).each { |poke|
         if poke == 0
           dex_array << nil
         end
-        dex_array << false
+        if resync && @seen_standard[poke]
+          dex_array << @seen_standard[poke]
+        else
+          dex_array << false
+        end
       }
       return dex_array
     end
 
-    def initFusionDexArray()
+    def initFusionDexArray(resync=false)
       head_array = []
       (0..NB_POKEMON).each { |head|
         body_array = []
@@ -60,7 +64,11 @@ class Player < Trainer
           if body == 0
             body_array << nil
           end
-          body_array << false
+          if resync && @seen_fusion[body]
+            body_array << @seen_fusion[body]
+          else
+            body_array << false
+          end
         }
         head_array << body_array
       }
@@ -79,17 +87,22 @@ class Player < Trainer
       return num > Settings::NB_POKEMON && !isTripleFusion(num)
     end
 
-    def set_seen_fusion(species)
-      initFusionDexArray() if @seen_fusion.length < NB_POKEMON+2
+    def resyncPokedexIfNumberOfPokemonChanged()
+      if @seen_standard.length < NB_POKEMON || @seen_fusion.length < NB_POKEMON
+        @seen_fusion = initFusionDexArray(true)
+        @seen_standard=initStandardDexArray(true )
+      end
+    end
 
+    def set_seen_fusion(species)
+      resyncPokedexIfNumberOfPokemonChanged()
       bodyId = getBodyID(species)
       headId = getHeadID(species, bodyId)
       @seen_fusion[headId][bodyId] = true
     end
 
     def set_seen_normalDex(species)
-      initStandardDexArray() if @seen_standard.length < NB_POKEMON
-
+      resyncPokedexIfNumberOfPokemonChanged()
       dex_num = getDexNumberForSpecies(species)
       @seen_standard[dex_num] = true
     end

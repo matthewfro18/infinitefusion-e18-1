@@ -38,13 +38,16 @@ module GameData
       @gender_ratio = calculate_gender() #todo
       @catch_rate = calculate_catch_rate()
       @happiness = calculate_base_happiness()
+
+      #Moves
       @moves = calculate_moveset()
+      @tutor_moves =calculate_tutor_moves() # hash[:tutor_moves] || []
+      @egg_moves = calculate_egg_moves() # hash[:egg_moves] || []
 
       #todo : all below
-      @tutor_moves = [] # hash[:tutor_moves] || []
-      @egg_moves = [] # hash[:egg_moves] || []
-      @abilities = [] # hash[:abilities] || []
-      @hidden_abilities = [] # hash[:hidden_abilities] || []
+
+      @abilities = calculate_abilities(@body_pokemon,@head_pokemon) # hash[:abilities] || []
+      @hidden_abilities = calculate_hidden_abilities(@body_pokemon,@head_pokemon) # hash[:hidden_abilities] || []
       @wild_item_common = [] # hash[:wild_item_common]
       @wild_item_uncommon = [] # hash[:wild_item_uncommon]
       @wild_item_rare = [] #  hash[:wild_item_rare]
@@ -130,6 +133,40 @@ module GameData
       return combine_arrays(@body_pokemon.moves, @head_pokemon.moves)
     end
 
+    def calculate_egg_moves
+      return combine_arrays(@body_pokemon.egg_moves, @head_pokemon.egg_moves)
+    end
+
+    def calculate_tutor_moves
+      return combine_arrays(@body_pokemon.tutor_moves, @head_pokemon.tutor_moves)
+    end
+
+    def calculate_abilities(pokemon1,pokemon2)
+      abilities_hash = []
+
+      ability1 = pokemon1.abilities[0]
+      ability2 = pokemon2.abilities[1]
+      if !ability2
+        ability2 = pokemon2.abilities[0]
+      end
+      abilities_hash << ability1
+      abilities_hash << ability2
+      return abilities_hash
+    end
+
+    def calculate_hidden_abilities(pokemon1,pokemon2)
+      #First two spots are the other abilities of the two pokemon
+      abilities_hash = calculate_abilities(pokemon2,pokemon1)
+      #add the hidden ability for the two base pokemon
+      abilities_hash << @body_pokemon.hidden_abilities[0]
+      abilities_hash << @head_pokemon.hidden_abilities[0]
+      return abilities_hash
+    end
+
+
+    #TODO
+    # ################## UNFINISHED ####################
+
     #todo
     def calculate_name()
       return @body_pokemon.name + "/" + @head_pokemon.name
@@ -155,7 +192,7 @@ module GameData
       return :Genderless
     end
 
-    #UTILS
+    #############################  UTIL METHODS ###############################
     #
     def calculate_fused_stats(dominantStat, otherStat)
       return ((2 * dominantStat) / 3) + (otherStat / 3).floor

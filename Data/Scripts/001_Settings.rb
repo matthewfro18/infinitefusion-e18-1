@@ -20,7 +20,7 @@ module Settings
   FUSION_ICON_SPRITE_OFFSET = 10
 
   #Infinite fusion settings
-  NB_POKEMON = 420
+  NB_POKEMON = 809
   CUSTOM_BASE_SPRITES_FOLDER = "Graphics/CustomBattlers/customBaseSprites/"
   CUSTOM_BATTLERS_FOLDER = "Graphics/CustomBattlers/"
   CUSTOM_BATTLERS_FOLDER_INDEXED = "Graphics/CustomBattlers/indexed/"
