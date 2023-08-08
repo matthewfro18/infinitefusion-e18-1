@@ -158,7 +158,7 @@ module GameData
     end
 
     def self.sprite_filename(dex_number)
-      dex_number = GameData::NAT_DEX_MAPPING[dex_number] ? GameData::NAT_DEX_MAPPING[dex_number] : dex_number
+      #dex_number = GameData::NAT_DEX_MAPPING[dex_number] ? GameData::NAT_DEX_MAPPING[dex_number] : dex_number
 
       return nil if dex_number == nil
       if dex_number <= Settings::NB_POKEMON

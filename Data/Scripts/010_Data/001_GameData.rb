@@ -40,6 +40,7 @@ module GameData
          return GameData::FusedSpecies.new(pokemon_id)
        end
      end
+
       raise "Unknown ID #{other}." unless self::DATA.has_key?(other)
 
 #if other == :Species
