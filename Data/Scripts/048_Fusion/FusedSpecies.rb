@@ -44,17 +44,21 @@ module GameData
       @tutor_moves = calculate_tutor_moves() # hash[:tutor_moves] || []
       @egg_moves = calculate_egg_moves() # hash[:egg_moves] || []
 
-      #todo : all below
-
+      #Abilities
       @abilities = calculate_abilities(@body_pokemon, @head_pokemon) # hash[:abilities] || []
       @hidden_abilities = calculate_hidden_abilities(@body_pokemon, @head_pokemon) # hash[:hidden_abilities] || []
+
+      @evolutions = [] # hash[:evolutions] || []
+
+      #todo : all below
+
+
       @wild_item_common = [] # hash[:wild_item_common]
       @wild_item_uncommon = [] # hash[:wild_item_uncommon]
       @wild_item_rare = [] #  hash[:wild_item_rare]
       @egg_groups = [:Undiscovered] # hash[:egg_groups] || [:Undiscovered]
       @hatch_steps = 1 #  hash[:hatch_steps] || 1
       @incense = nil #hash[:incense]
-      @evolutions = [] # hash[:evolutions] || []
       @height = 1 # hash[:height] || 1
       @weight = 1 #hash[:weight] || 1
       @color = :Red #hash[:color] || :Red

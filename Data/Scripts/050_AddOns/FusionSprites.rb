@@ -5,26 +5,26 @@ module GameData
       species = GameData::Species.get(species).id_number # Just to be sure it's a number
       return self.egg_sprite_bitmap(species, pkmn.form) if pkmn.egg?
       if back
-        ret = self.back_sprite_bitmap(species, nil, nil, pkmn.shiny?,pkmn.bodyShiny?,pkmn.headShiny?)
+        ret = self.back_sprite_bitmap(species, nil, nil, pkmn.shiny?, pkmn.bodyShiny?, pkmn.headShiny?)
       else
-        ret = self.front_sprite_bitmap(species, nil, nil, pkmn.shiny?,pkmn.bodyShiny?,pkmn.headShiny?)
+        ret = self.front_sprite_bitmap(species, nil, nil, pkmn.shiny?, pkmn.bodyShiny?, pkmn.headShiny?)
       end
       return ret
     end
 
-    def self.sprite_bitmap_from_pokemon_id(id, back = false, shiny=false, bodyShiny=false,headShiny=false)
+    def self.sprite_bitmap_from_pokemon_id(id, back = false, shiny = false, bodyShiny = false, headShiny = false)
       if back
-        ret = self.back_sprite_bitmap(id,nil,nil,shiny,bodyShiny,headShiny)
+        ret = self.back_sprite_bitmap(id, nil, nil, shiny, bodyShiny, headShiny)
       else
-        ret = self.front_sprite_bitmap(id,nil,nil,shiny,bodyShiny,headShiny)
+        ret = self.front_sprite_bitmap(id, nil, nil, shiny, bodyShiny, headShiny)
       end
       return ret
     end
 
     MAX_SHIFT_VALUE = 360
-    MINIMUM_OFFSET=40
-    ADDITIONAL_OFFSET_WHEN_TOO_CLOSE=40
-    MINIMUM_DEX_DIF=20
+    MINIMUM_OFFSET = 40
+    ADDITIONAL_OFFSET_WHEN_TOO_CLOSE = 40
+    MINIMUM_DEX_DIF = 20
 
     def self.calculateShinyHueOffset(dex_number, isBodyShiny = false, isHeadShiny = false)
       if dex_number <= NB_POKEMON
@@ -32,36 +32,35 @@ module GameData
           return SHINY_COLOR_OFFSETS[dex_number]
         end
         body_number = dex_number
-        head_number=dex_number
+        head_number = dex_number
 
-        else
+      else
         body_number = getBodyID(dex_number)
-        head_number=getHeadID(dex_number,body_number)
+        head_number = getHeadID(dex_number, body_number)
       end
-      if isBodyShiny && isHeadShiny && SHINY_COLOR_OFFSETS[body_number]  && SHINY_COLOR_OFFSETS[head_number]
+      if isBodyShiny && isHeadShiny && SHINY_COLOR_OFFSETS[body_number] && SHINY_COLOR_OFFSETS[head_number]
         offset = SHINY_COLOR_OFFSETS[body_number] + SHINY_COLOR_OFFSETS[head_number]
       elsif isHeadShiny && SHINY_COLOR_OFFSETS[head_number]
         offset = SHINY_COLOR_OFFSETS[head_number]
       elsif isBodyShiny && SHINY_COLOR_OFFSETS[body_number]
         offset = SHINY_COLOR_OFFSETS[body_number]
       else
-        offset = calculateShinyHueOffsetDefaultMethod(body_number,head_number,dex_number,isBodyShiny,isHeadShiny)
+        offset = calculateShinyHueOffsetDefaultMethod(body_number, head_number, dex_number, isBodyShiny, isHeadShiny)
       end
       return offset
     end
 
-
-    def self.calculateShinyHueOffsetDefaultMethod(body_number,head_number,dex_number, isBodyShiny = false, isHeadShiny = false)
+    def self.calculateShinyHueOffsetDefaultMethod(body_number, head_number, dex_number, isBodyShiny = false, isHeadShiny = false)
       dex_offset = dex_number
       #body_number = getBodyID(dex_number)
       #head_number=getHeadID(dex_number,body_number)
-      dex_diff = (body_number-head_number).abs
+      dex_diff = (body_number - head_number).abs
       if isBodyShiny && isHeadShiny
         dex_offset = dex_number
       elsif isHeadShiny
         dex_offset = head_number
       elsif isBodyShiny
-        dex_offset = dex_diff > MINIMUM_DEX_DIF ? body_number : body_number+ADDITIONAL_OFFSET_WHEN_TOO_CLOSE
+        dex_offset = dex_diff > MINIMUM_DEX_DIF ? body_number : body_number + ADDITIONAL_OFFSET_WHEN_TOO_CLOSE
       end
       offset = dex_offset + Settings::SHINY_HUE_OFFSET
       offset /= MAX_SHIFT_VALUE if offset > NB_POKEMON
@@ -79,7 +78,7 @@ module GameData
       filename = self.sprite_filename(dex_number)
       sprite = (filename) ? AnimatedBitmap.new(filename) : nil
       if isShiny
-      sprite.shiftColors(self.calculateShinyHueOffset(dex_number, bodyShiny, headShiny))
+        sprite.shiftColors(self.calculateShinyHueOffset(dex_number, bodyShiny, headShiny))
       end
       return sprite
     end
@@ -159,6 +158,8 @@ module GameData
     end
 
     def self.sprite_filename(dex_number)
+      dex_number = GameData::NAT_DEX_MAPPING[dex_number] ? GameData::NAT_DEX_MAPPING[dex_number] : dex_number
+
       return nil if dex_number == nil
       if dex_number <= Settings::NB_POKEMON
         return get_unfused_sprite_path(dex_number)
@@ -166,11 +167,11 @@ module GameData
         if dex_number >= Settings::ZAPMOLCUNO_NB
           specialPath = getSpecialSpriteName(dex_number)
           return pbResolveBitmap(specialPath)
-          head_id=nil
+          head_id = nil
         else
           body_id = getBodyID(dex_number)
           head_id = getHeadID(dex_number, body_id)
-          return get_fusion_sprite_path(head_id,body_id)
+          return get_fusion_sprite_path(head_id, body_id)
           # folder = head_id.to_s
           # filename = sprintf("%s.%s.png", head_id, body_id)
         end
@@ -208,20 +209,20 @@ def alt_sprites_substitutions_available
   return $PokemonGlobal && $PokemonGlobal.alt_sprite_substitutions
 end
 
-def get_fusion_sprite_path(head_id,body_id)
+def get_fusion_sprite_path(head_id, body_id)
   #Swap path if alt is selected for this pokemon
-  dex_num = getSpeciesIdForFusion(head_id,body_id)
+  dex_num = getSpeciesIdForFusion(head_id, body_id)
   if alt_sprites_substitutions_available && $PokemonGlobal.alt_sprite_substitutions.keys.include?(dex_num)
     return $PokemonGlobal.alt_sprite_substitutions[dex_num]
   end
 
   #Try local custom sprite
   filename = sprintf("%s.%s.png", head_id, body_id)
-  local_custom_path = Settings::CUSTOM_BATTLERS_FOLDER_INDEXED + head_id.to_s + "/" +filename
+  local_custom_path = Settings::CUSTOM_BATTLERS_FOLDER_INDEXED + head_id.to_s + "/" + filename
   return local_custom_path if pbResolveBitmap(local_custom_path)
 
   #Try to download custom sprite if none found locally
-  downloaded_custom = download_custom_sprite(head_id,body_id)
+  downloaded_custom = download_custom_sprite(head_id, body_id)
   return downloaded_custom if downloaded_custom
 
   #Try local generated sprite
@@ -229,7 +230,7 @@ def get_fusion_sprite_path(head_id,body_id)
   return local_generated_path if pbResolveBitmap(local_generated_path)
 
   #Download generate sprite if nothing else found
-  autogen_path= download_autogen_sprite(head_id,body_id)
+  autogen_path = download_autogen_sprite(head_id, body_id)
   return autogen_path if pbResolveBitmap(autogen_path)
 
   return Settings::DEFAULT_SPRITE_PATH

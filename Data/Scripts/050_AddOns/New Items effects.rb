@@ -1393,9 +1393,6 @@ def pbDNASplicing(pokemon, scene, supersplicers = false, superSplicer = false)
 end
 
 def selectFusion(pokemon, poke2, supersplicers = false)
-  p pokemon
-  p poke2
-
   return nil if !pokemon.is_a?(Pokemon) || !poke2.is_a?(Pokemon)
   return nil if pokemon.egg? || poke2.egg?
 
